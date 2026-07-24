@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from "react";
 import { cn } from "../../lib/utils/cn";
+import { typography } from "@/lib/theme/typography";
 
 export function Card({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
@@ -14,7 +15,7 @@ export function CardHeader({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("space-y-1.5 p-6", className)} {...props} />;
+  return <div className={cn( className)} {...props} />;
 }
 
 export function CardTitle({
@@ -22,16 +23,28 @@ export function CardTitle({
   ...props
 }: HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <h2
+    <h3
       className={cn("text-xl font-semibold tracking-normal", className)}
       {...props}
     />
   );
 }
 
+export function CardParagraphy({
+  className,
+  ...props
+}: HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p 
+      className={cn(typography.bodySm, className)}
+      {...props}
+    />
+  )
+}
+
 export function CardContent({
   className,
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("p-6 pt-0", className)} {...props} />;
+  return <div className={cn("p-0", className)} {...props} />;
 }

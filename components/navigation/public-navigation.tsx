@@ -1,23 +1,35 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { cn } from "@/lib/utils/cn";
 
 const links = [
-  { href: "/", label: "Accueil" },
+  { href: "/home", label: "Accueil" },
   { href: "/about", label: "À propos" },
-  { href: "/dashboard", label: "Admin" },
+  { href: "/Blog", label: "Blog" },
 ];
 
 export function PublicNavigation() {
+  const pathname = usePathname()
+
   return (
-    <nav aria-label="Navigation principale" className="flex items-center gap-5">
-      {links.map((link) => (
-        <Link
-          className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
+    <nav aria-label="Navigation principale" className="flex items-center font-mono gap-5">
+      {links.map((link) => {
+        const isActive = pathname === link.href;
+
+        return (
+          <Link
+          className={cn("text-sm font-medium transition hover:text-foreground",
+            isActive?  "text-secondary underline underline-offset-8 decoration-2 decoration-secondary" : "text-onBackground"
+          )}
           href={link.href}
           key={link.href}
         >
           {link.label}
         </Link>
-      ))}
+        )
+      })}
     </nav>
   );
 }

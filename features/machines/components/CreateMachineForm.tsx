@@ -2,7 +2,6 @@ import { Button } from "../../../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Select } from "../../../components/ui/select";
-import { createMachineAction } from "../actions/create-machine";
 
 export function CreateMachineForm() {
   return (
@@ -11,7 +10,7 @@ export function CreateMachineForm() {
         <CardTitle>Nouvelle machine</CardTitle>
       </CardHeader>
       <CardContent>
-        <form action={createMachineAction} className="space-y-4">
+        <form action="" className="space-y-4">
           <div className="space-y-2">
             <label className="text-sm font-medium" htmlFor="name">
               Nom

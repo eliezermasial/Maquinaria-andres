@@ -25,6 +25,7 @@
       "@/components/*": ["./components/*"],
       "@/lib/*": ["./lib/*"],
       "@/hooks/*": ["./hooks/*"],
+      "@/public/*": ["./public/*"],
       "@/providers/*": ["./providers/*"],
       "@/types/*": ["./types/*"]
     }
