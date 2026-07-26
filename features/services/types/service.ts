@@ -8,6 +8,18 @@ export type Prestation = {
     description: string
 };
 
+export type Product = {
+    id: number,
+    title: string,
+    slug: string,
+    badge: string,
+    image: string | StaticImageData,
+    description: string,
+    dayprice: string,
+    totalPrice: string,
+    features: string[],
+};
+
 export type Service = {
     id: number,
     slug: string,
@@ -18,6 +30,7 @@ export type Service = {
     image?: string | StaticImageData,
     shortDescription: string,
     featured?: boolean,
+    products?: Product[],
     prestations?: Prestation[],
     items: string[],
     advantages:  string[],

@@ -27,7 +27,7 @@ export function SemenceCard({
   reviews,
 }: ProductCardProps) {
   return (
-    <Card className="group w-full max-w-[289px] overflow-hidden rounded-2xl border border-border
+    <Card className="group w-full  overflow-hidden rounded-2xl border border-border
      bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <CardHeader className="relative h-50 overflow-hidden">

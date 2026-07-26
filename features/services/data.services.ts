@@ -72,6 +72,56 @@ export const services = [
     description:
       "Nous proposons la location de tracteurs et d'équipements agricoles afin de répondre aux besoins temporaires des exploitants agricoles et entreprises.",
     action: "Prendre RDV",
+    products: [
+      {
+        id: 1,
+        title: "John Deere 8R 410",
+        slug: "john-deere-8r-410",
+        badge: "Premium",
+        image: image,
+        description:
+          "Puissance de 410 ch, technologie JDLink intégrée, cabine haut de gamme pour un confort optimal.",
+        dayPrice: "450€",
+        totalPrice: "2 025€",
+        features: ["410 CV", "GPS intégré"],
+      },
+      {
+        id: 2,
+        title: "Case IH Axial-Flow",
+        slug: "case-ih-axial-flow",
+        badge: "Haute Performance",
+        image: image,
+        description:
+          "Système de battage rotatif pour une qualité de grain exceptionnelle.",
+        dayPrice: "890€",
+        totalPrice: "4 005€",
+        features: ["Axial-Flow", "Faible consommation"],
+      },
+      {
+        id: 3,
+        title: "JCB Loadall 542-70",
+        slug: "jcb-loadall",
+        badge: "",
+        image: image,
+        description:
+          "Chariot télescopique idéal pour les exploitations agricoles et les chantiers.",
+        dayPrice: "320€",
+        totalPrice: "1 440€",
+        features: ["17 m", "3.7 tonnes"],
+      },
+      {
+        id: 4,
+        title: "New Holland T7",
+        slug: "new-holland-t7",
+        badge: "Disponible",
+        image: image,
+        description:
+          "Tracteur polyvalent de 260 ch équipé d'un système de guidage GPS.",
+        dayPrice: "580€",
+        totalPrice: "2 610€",
+        features: ["260 CV", "GPS RTK"],
+      },
+    ],
     icon: Wrench,
     featured: true,
     items: [

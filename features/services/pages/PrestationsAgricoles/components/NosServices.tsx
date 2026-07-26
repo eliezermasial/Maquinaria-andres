@@ -3,9 +3,15 @@ import { PrestaionGrid } from "./PrestationGrid";
 import { Section } from "@/components/ui/section";
 import { typography } from "@/lib/theme/typography";
 import { Container } from "@/components/ui/container";
+import { Service } from "@/features/services/types/service";
 
 
-export function NosServices({service}) {
+type ServiceNosServiceProps = {
+  service: Service
+}
+
+export function NosServices({service}: ServiceNosServiceProps) {
+
   return (
     <Section className="bg-surface">
       <Container>

@@ -21,7 +21,9 @@ export function PublicNavigation() {
         return (
           <Link
           className={cn("text-sm font-medium transition hover:text-foreground",
-            isActive?  "text-secondary underline underline-offset-8 decoration-2 decoration-secondary" : "text-onBackground"
+            isActive?  "text-secondary underline underline-offset-8 decoration-2 decoration-secondary"
+              : 
+              "text-onBackground"
           )}
           href={link.href}
           key={link.href}

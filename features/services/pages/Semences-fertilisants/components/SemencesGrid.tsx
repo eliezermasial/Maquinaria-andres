@@ -4,6 +4,7 @@ import { SemenceCard } from "./SemenceCard";
 import ble from "@/public/ImageHero.png";
 import { Container } from "@/components/ui/container";
 import { FiltersSemences } from "./FiltersSemences";
+import { typography } from "@/lib/theme/typography";
 
 
 export const products = [
@@ -75,43 +76,51 @@ export const products = [
   },
 ];
 
+const Triers = [
+    {name: "Prix croissant"},
+    {name: "Prix décroissant"},
+    {name: "Pertinance"},
+    {name: "Nouveautés"},
+];
 
 export function SemencesGrid() {
   
   return (
     <>
       <Section className="bg-surface pt-10 pb-10">
-          <Container>
-            <FiltersSemences  />
-          </Container>
-      </Section>
-
-      <Section className="bg-onPrimary pt-10">
         <Container>
-          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <h2 className="text-xl font-semibold">
-              {products.length} produits trouvés
-            </h2>
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-muted-foreground">
-                Trier par
-              </span>
-              <select className="rounded-lg border border-border bg-white px-4 py-2 outline-none">
-                <option>Pertinence</option>
-                <option>Prix croissant</option>
-                <option>Prix décroissant</option>
-                <option>Nouveautés</option>
-              </select>
+          <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
+            <FiltersSemences/>
+            <div>
+              <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <h2 className="text-2xl font-bold">
+                  produits trouvés
+                  <span className="ml-2 text-muted-foreground text-base">
+                    {products.length}
+                  </span>
+                </h2>
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-muted-foreground">
+                    Trier par
+                  </span>
+                  <select className="rounded-lg border border-border cursor-pointer px-4 py-2">
+                    {Triers.map((item) => (
+                      <option key={item.name} value={item.name}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 ">
+                {products.map((product) => (
+                  <SemenceCard
+                    key={product.id}
+                    {...product}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((product) => (
-              <SemenceCard
-                key={product.id}
-                {...product}
-              />
-            ))}
           </div>
         </Container>
       </Section>
