@@ -13,8 +13,11 @@ const cropTypes = [
 
 const categories = [
   "Tous",
-  "Semences",
-  "Fertilisants",
+  "Semences agricoles",
+  "Engrais NPK",
+  "fertilisants organiques",
+  "Nutriments adaptés à chaque culture",
+  "Amendements de sol et biostimulants"
 ];
 
 export function FiltersSemences() {
@@ -49,28 +52,22 @@ export function FiltersSemences() {
           </div>
         </div>
 
-        <div className="flex-1 mt-10 mb-10">
-          <h3 className={cn(typography.h3,"mb-3 text-sm text-muted-foreground")} >
-            Catégories
+        <div className="space-y-2 mt-8 mb-8">
+          <h3 className={cn(typography.h3,"mb-4 text-sm text-muted-foreground")}>
+            Catégorie
           </h3>
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className="rounded-full border border-border px-4 py-2 text-sm transition
-                hover:border-primary hover:bg-primary hover:text-white"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          <select className="w-full rounded-xl border border-border px-4 py-3 cursor-pointer outline-none">
+              {categories.map((item) => (
+                <option key={item} value={item} className="text-sm">{item}</option>
+              ))}
+          </select>
         </div>
 
         <div className="w-full lg:w-auto">
           <h3 className={cn(typography.h3,"mb-4 text-sm text-muted-foreground")}>
             Disponibilité
           </h3>
-          <div className="flex items-center justify-between gap-4 rounded-xl border border-border p-3 lg:min-w-[220px]">
+          <div className="flex items-center justify-between gap-4 rounded-xl border border-border p-3 lg:min-w-55">
             <span className="text-sm">
               En stock uniquement
             </span>

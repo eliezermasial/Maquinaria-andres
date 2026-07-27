@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { VentPage } from "@/features/services/pages/vent";
+import { VentePage } from "@/features/services/pages/vente";
 import { LocationPage } from "@/features/services/pages/location";
 import { SemencePage } from "@/features/services/pages/Semences-fertilisants";
 import { getServiceBySlug } from "@/features/services/services/service.service";
@@ -8,17 +8,17 @@ import { PrestationsAgricolesPage } from "@/features/services/pages/PrestationsA
 
 
 export const servicePage = {
-    vente: VentPage,
+    vente: VentePage,
     location: LocationPage,
     semences: SemencePage,
     "preparation-sols": PrestationsAgricolesPage,
 };
 
-type PageProps = {
+type ServicePageProps = {
     params: Promise<{slug: string}>;
 }
 
-export async function generateMetadata({params}: PageProps): Promise<Metadata>
+export async function generateMetadata({params}: ServicePageProps): Promise<Metadata>
 {
     const {slug}= await params;
 
@@ -28,7 +28,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata>
 }
 
 
-export default async function ServicePage ({params}: PageProps)
+export default async function ServicePage ({params}: ServicePageProps)
 {
     const {slug} = await params;
     const service = await getServiceBySlug(slug);

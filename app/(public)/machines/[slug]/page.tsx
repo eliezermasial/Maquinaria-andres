@@ -1,9 +1,33 @@
-export default async function DetailMachine ({params}: {params: Promise<{slug: string}>}) {
+import { MachineDetail } from "@/features/machines/components/MachineDetail";
+import { getMachineByslug } from "@/features/machines/services/machine.service";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+type MachinePageProps = {
+    params: Promise<{slug: string}>;
+}
+
+export async function generateMetadata({params}: MachinePageProps): Promise<Metadata>
+{
+    const {slug}= await params;
+
+    return {
+        title: slug
+    }
+}
+
+export default async function MachinePage ({params}: MachinePageProps) {
+    
     const {slug} = await params;
+    const machine = await getMachineByslug(slug);
+
+    if(!machine) {
+        notFound()
+    }
 
     return (
-        <div className="bg-yelloAccent">
-            <h1> machine: {slug}</h1>
+        <div>
+            <MachineDetail machine={machine} />
         </div>
     )
 }

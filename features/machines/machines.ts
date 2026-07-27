@@ -1,15 +1,53 @@
 import image from "@/public/ImageHero.png";
 
+
 export const machines = [
-    {
+  {
     id: 1,
     serviceId: "location",
     title: "AeroCrop Gen 4",
     slug: "aerocrop-gen-4",
     category: "Drone",
     badge: "Location",
+    brand: "John Deere",
     image: image,
-    price: "sur  devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
   {
@@ -19,8 +57,45 @@ export const machines = [
     slug: "Titan-X-800",
     category: "Moissonneuse-batteuse",
     badge: "Nouveau",
+    brand: "John Deere",
     image: image,
-    price: "Sur devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
   {
@@ -30,8 +105,45 @@ export const machines = [
     slug: "John-Deere-8R-410",
     category: "Tracteur forte puissance",
     badge: "",
+    brand: "John Deere",
     image: image,
-    price: "Sur devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
   {
@@ -41,8 +153,44 @@ export const machines = [
     slug: "Orchard-Pro-250",
     category: "Récolteuse de fruits",
     badge: "Occasion Or",
+    brand: "New Holland",
     image: image,
-    price: "Sur devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
   {
@@ -52,19 +200,93 @@ export const machines = [
     slug: "AeroCrop-Gen-4",
     category: "Drone de précision",
     badge: "Location",
+    brand: "Case IH",
     image: image,
-    price: "Sur devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
   {
     id:6,
     serviceId: "vente-tracteurs",
-    title: "Deere-8R-410-John",
-    slug: "Deere-8R-410-John ",
+    title: "Deere 8R 410 John",
+    slug: "Deere-8R-John ",
     category: "Drone de précision",
     badge: "Location",
+    brand: "New Holland",
     image: image,
-    price: "Sur devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
   {
@@ -74,8 +296,44 @@ export const machines = [
     slug: "Gen-AeroCrop-4",
     category: "Drone de précision",
     badge: "Location",
+    brand: "Case IH",
     image: image,
-    price: "Sur devis",
+    price: "385 000 €",
+    power: 410,
+    hours: 1240,
+    transmission: "e23",
+    year: 2023,
+    engine: "John Deere PowerTech™ PSS 9,0 L",
+    cylinders: 6,
+    fuelCapacity: 727,
+    hydraulicFlow: 227,
+    shippingWeight: 14000,
+    equipment: [
+      {
+        label: "Guidage AutoTrac™",
+        icon: "Satellite",
+      },
+      {
+        label: "Climatisation Auto",
+        icon: "Snowflake",
+      },
+      {
+        label: "Pack éclairage LED",
+        icon: "Lightbulb",
+      },
+      {
+        label: "Siège ActiveSeat™ II",
+        icon: "UserRound",
+      },
+      {
+        label: "JDLink™ télématique",
+        icon: "Radio",
+      },
+      {
+        label: "Radar de vitesse",
+        icon: "Gauge",
+      },
+    ],
     featured: true,
   },
 ];

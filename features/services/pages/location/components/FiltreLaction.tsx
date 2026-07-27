@@ -24,11 +24,11 @@ const Marques = [
 ];
 
 const categories = [
-    {name: "Tracteur"},
-    {name: "Moissonneuse"},
-    {name: "Chargeuse"},
-    {name: "Pulvérisateur"},
-    {name: "Remorque"}
+    {name: "Tracteurs agricoles"},
+    {name: "mini-tracteurs"},
+    {name: "Équipements-préparation-sols"},
+    {name: "Matériel pour les semis"},
+    {name: "travail du sol ou le transport"},
 ];
 
 export function FiltreLocation () {

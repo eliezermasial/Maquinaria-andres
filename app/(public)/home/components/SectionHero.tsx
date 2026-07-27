@@ -8,7 +8,7 @@ export function SectionHero () {
     return (
         <section className="relative h-[90vh] overflow-hidden bg-[url('/imageHero.png')] bg-cover bg-center bg-no-repeat font-sans">
             <div 
-                className="absolute inset-0 bg-gradient-to-r from-[#01261f]/90 
+                className="absolute inset-0 bg-linear-to-r from-[#01261f]/90 
                 via-[#01261f]/50 via-45% to-transparent"
             />
             <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6" >
@@ -34,7 +34,7 @@ export function SectionHero () {
                         >
                             Voir les machines
                         </Link>
-                        <Link href="/" 
+                        <Link href="/services/location" 
                             className="rounded-lg border border-white px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-onBackground"
                         >
                             Louer

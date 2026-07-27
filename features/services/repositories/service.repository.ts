@@ -5,7 +5,7 @@ import type { Service } from "../types/service";
 
 export async function findAllServices (): Promise<Service[]>
 {
-    return services
+    return services;
 }
 
 export async function findServiceBySlug (slug: string): Promise<Service|null>
