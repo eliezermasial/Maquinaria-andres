@@ -1,29 +1,19 @@
-import {
-  Activity,
-  BadgeCheck,
-  Gauge,
-  Lightbulb,
-  Radio,
-  Satellite,
-  Settings2,
-  Snowflake,
-  UserRound,
-} from "lucide-react";
 import type { Machine } from "@/features/machines/types/machine";
 import { cn } from "@/lib/utils/cn";
 import { MachineTab } from "./MachineDetail";
 import { SimilarMachinesGrid } from "./SimilarMachinesGrid";
 import { typography } from "@/lib/theme/typography";
+import {Activity,BadgeCheck,Gauge,Lightbulb,Radio,Satellite,Settings2,Snowflake,UserRound} from "lucide-react";
 
 
-type MachineSpecificationsProps = {
+type MachineAttributeProps = {
   machine: Machine;
   activeTab: MachineTab;
   similarMachines: Machine[];
   setActiveTab: React.Dispatch<React.SetStateAction<MachineTab>>;
 };
 
-export function MachineAttribute({ machine, similarMachines,setActiveTab, activeTab}: MachineSpecificationsProps) {
+export function MachineAttribute({ machine, similarMachines,setActiveTab, activeTab}: MachineAttributeProps) {
 
   const tabs = [
     "Caractéristiques",
@@ -144,7 +134,7 @@ export function MachineAttribute({ machine, similarMachines,setActiveTab, active
                       className="flex items-center gap-3 rounded-lg border border-border bg-white px-3 py-3"
                     >
                       <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-secondary/40 text-primary">
-                        <Icon className="size-4" />
+                        
                       </span>
 
                       <span className="text-xs font-medium text-onBackground">

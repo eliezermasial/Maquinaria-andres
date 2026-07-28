@@ -1,13 +1,17 @@
-import { SectionHero } from "./components/SectionHero";
-import { ServicesGrid } from "@/features/services/components/ServicesGrid";
 import Link from "next/link";
-import { MachinesGrid } from "@/features/machines/components/MachinesGrid"
-import { cn } from "@/lib/utils/cn";
-import { typography } from "@/lib/theme/typography";
 import Image  from "next/image";
+import { cn } from "@/lib/utils/cn";
 import atelier from "@/public/ImageHero.png";
 import { Section } from "@/components/ui/section";
+import { typography } from "@/lib/theme/typography";
 import { Container } from "@/components/ui/container";
+import { SectionHero } from "./components/SectionHero";
+import { ServicesGrid } from "@/features/services/components/ServicesGrid";
+import { MachinesGrid } from "@/features/machines/components/MachinesGrid";
+import { Testimonials } from "@/features/testimonials/Testimonials";
+import { SectionTrust } from "./components/SectionTrust";
+
+
 
 export const metadata = {
   title: "Accueil",
@@ -26,13 +30,12 @@ export default async function Home() {
               <br />
               depuis 40 ans
             </h2>
-            <p className={cn(typography.body, "mt-6 max-w-xl text-muted-foreground")} >
+            <p className={cn(typography.body, "mt-6 max-w-xl text-muted-foreground")}>
               Depuis 1984, Maquinaria Andrés accompagne les professionnels de la
               terre avec une rigueur industrielle et une passion pour la
               technologie. Notre mission est de fournir des solutions robustes qui
               maximisent votre productivité.
             </p>
-
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               <div className=" border-l-4 rounded-2xl border-secondary bg-surface p-6 shadow-sm">
                 <h3 className="text-6xl font-bold text-onBackground">
@@ -58,11 +61,13 @@ export default async function Home() {
               <Image
                 src={atelier}
                 alt="Technicien en maintenance"
-                className="h-[370px] w-full object-cover"
+                className="h-92.5 w-full object-cover"
                 priority
               />
             </div>
-            <div className="absolute bottom-0 left-0 max-w-xs rounded-2xl bg-white/90 p-6 shadow-xl backdrop-blur">
+            <div className="absolute bottom-0 -left-0/12 p-4 max-w-xs rounded-2xl
+              bg-white/90 shadow-xlbackdrop-blur"
+            >
               <span className="text-xl">⚙️</span>
               <h3 className="mt-3 text-2xl font-semibold text-onBackground">
                 Qualité Certifiée
@@ -72,7 +77,6 @@ export default async function Home() {
               </p>
             </div>
           </div>
-
         </Container>
       </Section>
 
@@ -91,7 +95,7 @@ export default async function Home() {
         </Container>
       </Section>
 
-      <Section className="bg-onPrimary">
+      <Section className="bg-onPrimary pt-15">
         <Container>
           <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-center">
             <div>
@@ -104,8 +108,9 @@ export default async function Home() {
             </div>
             <Link
               href="/machines/catalogue"
-              className="rounded-xl border border-primary px-6 py-3 font-medium text-primary transition hover:bg-primary hover:text-white"
-              >
+              className="rounded-xl border border-primary px-6 py-3 font-medium text-primary
+              transition hover:bg-primary hover:text-white"
+            >
               Tout le catalogue
             </Link>
           </div>
@@ -113,6 +118,48 @@ export default async function Home() {
           <MachinesGrid />
         </Container>
       </Section>
+      <Section className="overflow-hidden bg-primary text-white">
+        <Container>
+          <SectionTrust />
+        </Container>
+      </Section>
+
+      <Section className="bg-surface">
+        <Container>
+          <Testimonials />
+        </Container>
+      </Section>
+
+      <Section className="bg-primary">
+      <Container>
+        <div className="mx-auto max-w-3xl text-center text-white">
+          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+            Prêt à booster votre exploitation ?
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
+            Nos experts sont à votre disposition pour étudier vos besoins et
+            vous proposer la solution la plus performante au meilleur prix.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <button
+              type="button"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-yellow-400 px-6 py-3 text-sm font-semibold text-primary transition hover:bg-yellow-300 sm:w-auto"
+            >
+              Demander une étude personnalisée
+            </button>
+
+            <button
+              type="button"
+              className="w-full rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90 sm:w-auto"
+            >
+              Contacter latelier
+            </button>
+          </div>
+        </div>
+      </Container>
+    </Section>
     </div>
   );
 }

@@ -5,12 +5,14 @@ import { LocationPage } from "@/features/services/pages/location";
 import { SemencePage } from "@/features/services/pages/Semences-fertilisants";
 import { getServiceBySlug } from "@/features/services/services/service.service";
 import { PrestationsAgricolesPage } from "@/features/services/pages/PrestationsAgricoles";
+import { outilsAgricolesPage } from "@/features/services/pages/outils-agricoles";
 
 
 export const servicePage = {
     vente: VentePage,
     location: LocationPage,
     semences: SemencePage,
+    "outils-agricoles": outilsAgricolesPage,
     "preparation-sols": PrestationsAgricolesPage,
 };
 

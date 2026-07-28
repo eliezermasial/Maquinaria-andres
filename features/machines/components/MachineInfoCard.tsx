@@ -1,6 +1,7 @@
 import { ComponentType } from "react";
 import { Machine } from "../types/machine";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 import { DocumentItemProps, SpecificationProps } from "./MachineDetail";
 import { CalendarDays, Download, ExternalLink, FileText, Heart, PlayCircle, Share2 } from "lucide-react";
 
@@ -37,7 +38,7 @@ export function MachineInfoCard ({machine, DocumentItem, Specification} : Machin
                   <button
                     type="button"
                     className="flex size-9 items-center justify-center rounded-full
-                    text-muted-foreground transition hover:bg-muted hover:text-red-500"
+                    text-muted-foreground transition hover:bg-muted"
                     aria-label="Ajouter aux favoris"
                   >
                     <Heart className="size-4" />
@@ -54,28 +55,30 @@ export function MachineInfoCard ({machine, DocumentItem, Specification} : Machin
                 </span>
               </div>
 
-              <span className="mt-2 inline-flex rounded-full bg-secondary px-2.5 py-1 text-[10px] font-semibold uppercase text-onBackground">
+              <span className="mt-2 inline-flex rounded-full bg-yelloAccent px-2.5 py-1 text-[10px]
+              font-semibold uppercase text-onBackground">
                 En stock
               </span>
 
               <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <button
-                  type="button"
-                  className="flex h-11 items-center justify-center gap-2 rounded-lg bg-secondary px-4 text-sm
-                  font-semibold text-onBackground transition hover:brightness-95"
+                <Link
+                  href={`/machines/${machine.slug}/purchase`}
+                  className="flex h-11 items-center justify-center gap-2 rounded-lg bg-yelloAccent px-4 text-sm
+                  font-semibold text-onBackground transition hover:brightness-75"
                 >
                   <FileText className="size-4" />
                   Demander un devis
-                </button>
+                </Link>
 
-                <button
-                  type="button"
+                <Link
+                href={`/machines/${machine.slug}/purchase`}
+                  
                   className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-4
                   text-sm font-semibold text-white transition hover:opacity-90"
                 >
                   <CalendarDays className="size-4" />
                   Réserver
-                </button>
+                </Link>
               </div>
             </div>
 

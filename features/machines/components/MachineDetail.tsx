@@ -81,7 +81,7 @@ export function MachineDetail({ machine }: MachineDetailProps) {
 
   return (
     <>
-      <Section className="bg-surface pb-10">
+      <Section className="bg-surface pt-15 pb-10">
         <Container>
           <div className="mb-5 text-xs text-muted-foreground sm:mb-7">
             Accueil <span className="mx-1">›</span>

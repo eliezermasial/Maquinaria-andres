@@ -2,16 +2,17 @@ import Link from "next/link";
 import {Heart, ShoppingCart, User} from "lucide-react";
 
 const links = [
-  { href: "/favori", icon: Heart },
-  { href: "/chart", icon: ShoppingCart },
-  { href: "/login", icon: User },
+  { href: "/favori", label: "favori", icon: Heart },
+  { href: "/login", label: "connexion", icon: User },
+  { href: "/chart", label: "chart", icon: ShoppingCart },
 ];
 
 export function HeaderActions() {
+
   return (
     <nav
       aria-label="Actions utilisateur"
-      className="flex items-center gap-5"
+      className="flex items-center gap-3 sm:gap-5"
     >
       {links.map((link) => {
         const Icon = link.icon;
@@ -20,9 +21,10 @@ export function HeaderActions() {
           <Link
             key={link.href}
             href={link.href}
-            className="flex items-center gap-2 text-sm font-medium text-onBackground transition hover:text-foreground"
+            aria-label={link.label}
+            className="flex items-center text-onBackground transition hover:text-foreground"
           >
-            <Icon className="size-6" />
+            <Icon className="size-5 sm:size-6" />
           </Link>
         );
       })}
