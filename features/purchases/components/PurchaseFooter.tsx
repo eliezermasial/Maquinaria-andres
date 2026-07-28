@@ -11,6 +11,8 @@ type PurchaseFooterProps = {
 export function PurchaseFooter({step, handleClose, handleBack, handleNext}: PurchaseFooterProps) {
 
     return (
+        <>
+        {step !== 3 && (
         <footer className="flex shrink-0 flex-col-reverse gap-3 border-t border-slate-200 bg-white
             px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6"
           >
@@ -36,5 +38,7 @@ export function PurchaseFooter({step, handleClose, handleBack, handleNext}: Purc
               </button>
             )}
         </footer>
+        )}
+        </>
     )
 }

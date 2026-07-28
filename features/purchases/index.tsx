@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Stepper } from "./components/Stepper";
 import type { Machine } from "../machines/types/machine";
 import { Purchaseheader } from "./components/PurchaseHeader";
-import { Stepper } from "./components/Stepper";
 import { PurchaseContent } from "./components/PurchaseContent";
 import { PurchaseFooter } from "./components/PurchaseFooter";
 

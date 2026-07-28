@@ -134,7 +134,8 @@ export function MachineAttribute({ machine, similarMachines,setActiveTab, active
                       className="flex items-center gap-3 rounded-lg border border-border bg-white px-3 py-3"
                     >
                       <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-secondary/40 text-primary">
-                        
+                        <Icon size={24} />
+                        eliezer
                       </span>
 
                       <span className="text-xs font-medium text-onBackground">

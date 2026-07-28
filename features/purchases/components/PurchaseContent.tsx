@@ -60,30 +60,30 @@ export function PurchaseContent({
                 />
             )}
 
-          {step === 2 && (
-            <StepPay
-                PaymentMethod={PaymentMethod}
-                handlePayment={handlePayment}
-                isProcessing={isProcessing}
-                setPaymentMethod={setPaymentMethod}
-                setStep={setStep}
-                paymentMethod={paymentMethod}
-                total={total}
-                machine={machine}
-                subtotal={subtotal}
-                tax={tax}
-                quantity={quantity}
-            />
-          )}
+            {step === 2 && (
+                <StepPay
+                    PaymentMethod={PaymentMethod}
+                    handlePayment={handlePayment}
+                    isProcessing={isProcessing}
+                    setPaymentMethod={setPaymentMethod}
+                    setStep={setStep}
+                    paymentMethod={paymentMethod}
+                    total={total}
+                    machine={machine}
+                    subtotal={subtotal}
+                    tax={tax}
+                    quantity={quantity}
+                />
+            )}
 
-          {step === 3 && (
-            <StepSuccess
-                machine={machine}
-                total={total}
-                quantity={quantity}
-                handleClose={handleClose}
-            />
-          )}
+            {step === 3 && (
+                <StepSuccess
+                    machine={machine}
+                    total={total}
+                    quantity={quantity}
+                    handleClose={handleClose}
+                />
+            )}
         </div>
     )
 }
