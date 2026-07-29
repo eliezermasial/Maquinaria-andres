@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHero } from "./components/SectionHero";
 import { ServicesGrid } from "@/features/services/components/ServicesGrid";
 import { MachinesGrid } from "@/features/machines/components/MachinesGrid";
-import { Testimonials } from "@/features/testimonials/Testimonials";
+import { Testimonials } from "@/features/testimonials/components";
 import { SectionTrust } from "./components/SectionTrust";
 
 
@@ -118,6 +118,7 @@ export default async function Home() {
           <MachinesGrid />
         </Container>
       </Section>
+      
       <Section className="overflow-hidden bg-primary text-white">
         <Container>
           <SectionTrust />
