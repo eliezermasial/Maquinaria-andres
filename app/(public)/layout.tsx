@@ -1,6 +1,5 @@
-
 import { Footer } from "@/components/layouts/footer";
-import { PublicHeader } from "@/components/layouts/public-header";
+import { PublicHeader } from "@/components/layouts/PublicHeader";
 import React from "react";
 
 export default function PublicLayout({
