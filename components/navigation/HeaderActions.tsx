@@ -3,8 +3,8 @@ import {Heart, ShoppingCart, User} from "lucide-react";
 
 const links = [
   { href: "/favori", label: "favori", icon: Heart },
-  { href: "/login", label: "connexion", icon: User },
   { href: "/chart", label: "chart", icon: ShoppingCart },
+  { href: "/login", label: "connexion", icon: User },
 ];
 
 export function HeaderActions() {

@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils/cn";
 import { Input } from "@/components/ui/input";
 import { Menu, Search, X } from "lucide-react";
 import { APP_NAME } from "@/lib/constants/app";
-import { HeaderActions } from "../navigation/HeaderActions";
-import { PublicNavigation } from "../navigation/PublicNavigation";
+import { HeaderActions } from "@/components/navigation/HeaderActions";
+import { PublicNavigation } from "@/components/navigation/PublicNavigation";
 
 
 export function PublicHeader() {

@@ -1,36 +1,56 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import { cn } from "@/lib/utils/cn";
 
 const links = [
   { href: "/home", label: "Accueil" },
   { href: "/about", label: "À propos" },
-  { href: "/Blog", label: "Blog" },
+  { href: "/blog", label: "Blog" },
 ];
 
-export function PublicNavigation() {
-  const pathname = usePathname()
+type PublicNavigationProps = {
+  mobile?: boolean;
+};
+
+export function PublicNavigation({
+  mobile = false,
+}: PublicNavigationProps) {
+  const pathname = usePathname();
 
   return (
-    <nav aria-label="Navigation principale" className="flex items-center font-mono gap-5">
+    <nav
+      aria-label="Navigation principale"
+      className={cn(
+        mobile
+          ? "flex flex-col gap-1"
+          : "flex items-center gap-5 font-mono",
+      )}
+    >
       {links.map((link) => {
         const isActive = pathname === link.href;
 
         return (
           <Link
-          className={cn("text-sm font-medium transition hover:text-foreground",
-            isActive?  "text-secondary underline underline-offset-8 decoration-2 decoration-secondary"
-              : 
-              "text-onBackground"
-          )}
-          href={link.href}
-          key={link.href}
-        >
-          {link.label}
-        </Link>
-        )
+            key={link.href}
+            href={link.href}
+            className={cn(
+              "text-sm font-medium transition",
+              mobile
+                ? "rounded-lg px-3 py-3 hover:bg-muted"
+                : "hover:text-foreground",
+              isActive
+                ? mobile
+                  ? "bg-muted text-secondary"
+                  : "text-secondary underline decoration-2 underline-offset-8"
+                : "text-onBackground",
+            )}
+          >
+            {link.label}
+          </Link>
+        );
       })}
     </nav>
   );
