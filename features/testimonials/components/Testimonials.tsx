@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { testimonials } from "./testimonials";
+import { testimonials } from "../testimonials";
 
 
 
