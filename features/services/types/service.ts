@@ -15,7 +15,7 @@ export type Product = {
     badge: string,
     image: string | StaticImageData,
     description: string,
-    dayprice: string,
+    dayPrice?: string,
     totalPrice: string,
     features: string[],
 };

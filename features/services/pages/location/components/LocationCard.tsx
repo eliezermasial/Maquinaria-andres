@@ -41,7 +41,7 @@ export function LocationCard ({product}: LocationCardProps) {
                     
                     <div className="text-right">
                         <span className="text-lg font-bold">
-                            {product.dayprice}
+                            {product.dayPrice}
                         </span>
                         <p className="text-xs text-muted-foreground">
                             /jour
