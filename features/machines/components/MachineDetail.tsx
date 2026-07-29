@@ -8,6 +8,7 @@ import type { Machine } from "@/features/machines/types/machine";
 import { MachineAttribute } from "./MachineAttribute";
 import { getMachines } from "../services/machine.service";
 import { useEffect, useState } from "react";
+import { SimilarMachinesGrid } from "./SimilarMachinesGrid";
 
 
 
@@ -101,14 +102,20 @@ export function MachineDetail({ machine }: MachineDetailProps) {
           </div>
         </Container>
       </Section>
-      <Section className="bg-onPrimary pt-10">
+      
+      <Section className="bg-onPrimary pb-10">
         <Container>
           <MachineAttribute
             machine={machine}
-            similarMachines={machines}
             setActiveTab={setActiveTab}
             activeTab={activeTab}
           />
+        </Container>
+      </Section>
+      
+      <Section className="bg-onPrimary pt-10">
+        <Container>
+          <SimilarMachinesGrid similarMachines={machines} />
         </Container>
       </Section>
     </>

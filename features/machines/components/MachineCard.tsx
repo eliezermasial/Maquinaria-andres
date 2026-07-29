@@ -24,12 +24,15 @@ export function MachineCard ({machine}: MachineProps) {
                 />
                 {machine.badge && (
                     <Badge
-                        className="absolute left-4 top-4 bg-secondary px-3 py-1 text-xs uppercase text-onBackground"
+                        className="absolute left-4 top-4 bg-yelloAccent border-secondary px-3 py-1
+                        text-xs uppercase text-onBackground"
                     >
                         {machine.badge}
                     </Badge>
                 )}
-                <button className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow">
+                <button className="absolute right-4 top-3 flex h-10 w-10 md:h-8 md:w-8 items-center
+                    justify-center rounded-full bg-white shadow"
+                >
                   <Heart size={18} />
                 </button>
             </CardHeader>

@@ -1,19 +1,18 @@
-import type { Machine } from "@/features/machines/types/machine";
 import { cn } from "@/lib/utils/cn";
 import { MachineTab } from "./MachineDetail";
-import { SimilarMachinesGrid } from "./SimilarMachinesGrid";
 import { typography } from "@/lib/theme/typography";
+import type { Machine } from "@/features/machines/types/machine";
 import {Activity,BadgeCheck,Gauge,Lightbulb,Radio,Satellite,Settings2,Snowflake,UserRound} from "lucide-react";
 
 
 type MachineAttributeProps = {
   machine: Machine;
   activeTab: MachineTab;
-  similarMachines: Machine[];
   setActiveTab: React.Dispatch<React.SetStateAction<MachineTab>>;
 };
 
-export function MachineAttribute({ machine, similarMachines,setActiveTab, activeTab}: MachineAttributeProps) {
+export function MachineAttribute({ machine,setActiveTab, activeTab}: MachineAttributeProps)
+{
 
   const tabs = [
     "Caractéristiques",
@@ -23,8 +22,8 @@ export function MachineAttribute({ machine, similarMachines,setActiveTab, active
 
   return (
     <aside className="">
-        <div className="border-b border-border">
-            <div className="flex gap-6 overflow-x-auto mt-10 sm:gap-8">
+      <div className="border-b border-border">
+        <div className="flex gap-6 overflow-x-auto mt-10 sm:gap-8">
                 {tabs.map((tab) => (
                 <button
                     key={tab}
@@ -43,16 +42,15 @@ export function MachineAttribute({ machine, similarMachines,setActiveTab, active
                     )}
                 </button>
                 ))}
-            </div>
         </div>
-
-        {activeTab === "Caractéristiques" && (
-            <div className="grid gap-8 py-7 sm:py-8 lg:grid-cols-2 lg:gap-12">
-                <div>
-              <h2 className="mb-4 text-xs font-medium text-muted-foreground">
-                Données Techniques
-              </h2>
-              <div className="overflow-hidden rounded-lg border border-border">
+      </div>
+      {activeTab === "Caractéristiques" && (
+        <div className="grid gap-8 py-7 sm:py-8 lg:grid-cols-2 lg:gap-12">
+            <div>
+          <h2 className="mb-4 text-xs font-medium text-muted-foreground">
+            Données Techniques
+          </h2>
+          <div className="overflow-hidden rounded-lg border border-border">
                 {[
                   {
                     label: "Moteur",
@@ -89,125 +87,118 @@ export function MachineAttribute({ machine, similarMachines,setActiveTab, active
                     </span>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            <div>
-              <h2 className="mb-4 text-xs font-medium text-muted-foreground">
-                Équipements Inclus
-              </h2>
-
-              <div className="grid gap-2 sm:grid-cols-2">
-                {(
-                  machine.equipment ?? [
-                    {
-                      label: "Guidage AutoTrac™",
-                      icon: Satellite,
-                    },
-                    {
-                      label: "Climatisation Auto",
-                      icon: Snowflake,
-                    },
-                    {
-                      label: "Pack éclairage LED",
-                      icon: Lightbulb,
-                    },
-                    {
-                      label: "Siège ActiveSeat™ II",
-                      icon: UserRound,
-                    },
-                    {
-                      label: "JDLink™ télématique",
-                      icon: Radio,
-                    },
-                    {
-                      label: "Radar de vitesse",
-                      icon: Gauge,
-                    },
-                  ]
-                ).map((equipment) => {
-                  const Icon = equipment.icon;
-
-                  return (
-                    <div
-                      key={equipment.label}
-                      className="flex items-center gap-3 rounded-lg border border-border bg-white px-3 py-3"
-                    >
-                      <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-secondary/40 text-primary">
-                        <Icon size={24} />
-                        eliezer
-                      </span>
-
-                      <span className="text-xs font-medium text-onBackground">
-                        {equipment.label}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
-        )}
-
-        {activeTab === "Équipements" && (
-          <div className="py-7 sm:py-8">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {(
-                machine.equipment ?? [
-                  {
-                    label: "Guidage AutoTrac™",
-                    icon: Satellite,
-                  },
-                  {
-                    label: "Climatisation Auto",
-                    icon: Snowflake,
-                  },
-                  {
-                    label: "Pack éclairage LED",
-                    icon: Lightbulb,
-                  },
-                  {
-                    label: "Siège ActiveSeat™ II",
-                    icon: UserRound,
-                  },
-                  {
-                    label: "JDLink™ télématique",
-                    icon: Radio,
-                  },
-                  {
-                    label: "Radar de vitesse",
-                    icon: Gauge,
-                  },
-                ]
-              ).map((equipment) => {
-                const Icon = equipment.icon;
-
-                return (
-                  <div
-                    key={equipment.label}
-                    className="flex items-center gap-4 rounded-xl border border-border bg-white p-4"
+        </div>
+        <div>
+          <h2 className="mb-4 text-xs font-medium text-muted-foreground">
+            Équipements Inclus
+          </h2>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {( machine.equipment ?? [
+              {
+                label: "Guidage AutoTrac™",
+                icon: Satellite,
+              },
+              {
+                label: "Climatisation Auto",
+                icon: Snowflake,
+              },
+              {
+                label: "Pack éclairage LED",
+                icon: Lightbulb,
+              },
+              {
+                label: "Siège ActiveSeat™ II",
+                icon: UserRound,
+              },
+              {
+                label: "JDLink™ télématique",
+                icon: Radio,
+              },
+              {
+                label: "Radar de vitesse",
+                icon: Gauge,
+              },
+            ]
+            ).map((equipment) => {
+              const Icon = equipment.icon;
+              return (
+                <div
+                  key={equipment.label}
+                  className="flex items-center gap-3 rounded-lg border border-border bg-white px-3 py-3"
+                >
+                  <span className="flex size-8 shrink-0 items-center justify-center
+                    rounded-md bg-secondary/40 text-primary"
                   >
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-secondary/40 text-primary">
-                      <Icon className="size-5" />
-                    </span>
-
-                    <div>
-                      <h3 className="text-sm font-semibold text-onBackground">
-                        {equipment.label}
-                      </h3>
-
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        Équipement inclus avec cette machine.
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                    <Icon size={24} />
+                  </span>
+                  <span className="text-xs font-medium text-onBackground">
+                    {equipment.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
-        )}
+        </div>
+      </div>
+      )}
 
-        {activeTab === "Maintenance" && (
+      {activeTab === "Équipements" && (
+        <div className="py-7 sm:py-8">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {( machine.equipment ?? [
+              {
+                label: "Guidage AutoTrac™",
+                icon: Satellite,
+              },
+              {
+                label: "Climatisation Auto",
+                icon: Snowflake,
+              },
+              {
+                label: "Pack éclairage LED",
+                icon: Lightbulb,
+              },
+              {
+                label: "Siège ActiveSeat™ II",
+                icon: UserRound,
+              },
+              {
+                label: "JDLink™ télématique",
+                icon: Radio,
+              },
+              {
+                label: "Radar de vitesse",
+                icon: Gauge,
+              },
+            ]).map((equipment) => {
+              const Icon = equipment.icon;
+              return (
+                <div
+                  key={equipment.label}
+                  className="flex items-center gap-4 rounded-xl border border-border bg-white p-4"
+                >
+                  <span className="flex size-10 shrink-0 items-center justify-center
+                    rounded-lgbg-secondary/40 text-primary"
+                  >
+                    <Icon className="size-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-onBackground">
+                      {equipment.label}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Équipement inclus avec cette machine.
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {activeTab === "Maintenance" && (
           <div className="py-7 sm:py-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
@@ -252,11 +243,7 @@ export function MachineAttribute({ machine, similarMachines,setActiveTab, active
 
             </div>
           </div>
-        )}
-
-        <div className="border-t border-border mt-10 py-7">
-          <SimilarMachinesGrid similarMachines={similarMachines} />
-        </div>
+      )}
     </aside>
   );
 }

@@ -2,11 +2,16 @@ import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
 import { typography } from "@/lib/theme/typography";
 import { APP_NAME } from "@/lib/constants/app";
+import image from "@/public/ImageHero.png";
 
 
 export function SectionHero () {
     return (
-        <section className="relative h-[90vh] overflow-hidden bg-[url('/imageHero.png')] bg-cover bg-center bg-no-repeat font-sans">
+        <section 
+            style={{ backgroundImage: `url(${image.src})` }}
+            className="relative h-[90vh] overflow-hidden
+            bg-cover bg-center bg-no-repeat font-sans"
+        >
             <div 
                 className="absolute inset-0 bg-linear-to-r from-[#01261f]/90 
                 via-[#01261f]/50 via-45% to-transparent"
