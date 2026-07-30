@@ -6,7 +6,6 @@ import { machines } from "../machines";
 import { FilterCatalog } from "./components/FilterCatalog";
 import { CatalogGrid } from "./components/CatalogGrid";
 import { cn } from "@/lib/utils/cn";
-import { typography } from "@/lib/theme/typography";
 import { MobileFilterButton } from "@/components/ui/MobileFilterButton";
 import { Machine } from "../types/machine";
 import { useFilters } from "@/hooks/useFilters";

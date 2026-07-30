@@ -46,44 +46,6 @@ export function Testimonials() {
           <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-secondary" />
         </div>
 
-        {/* Navigation */}
-        <div className="mb-5 flex items-center justify-end gap-2">
-          <button
-            type="button"
-            onClick={handlePrevious}
-            disabled={currentPage === 0}
-            aria-label="Commentaires précédents"
-            className="
-              flex size-10 items-center justify-center
-              rounded-full border border-border bg-white
-              text-onBackground shadow-sm
-              transition
-              hover:border-primary hover:bg-primary hover:text-white
-              disabled:pointer-events-none disabled:opacity-30
-            "
-          >
-            <ChevronLeft size={18} />
-          </button>
-
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={currentPage === totalPages - 1}
-            aria-label="Commentaires suivants"
-            className="
-              flex size-10 items-center justify-center
-              rounded-full border border-border bg-white
-              text-onBackground shadow-sm
-              transition
-              hover:border-primary hover:bg-primary hover:text-white
-              disabled:pointer-events-none disabled:opacity-30
-            "
-          >
-            <ChevronRight size={18} />
-          </button>
-        </div>
-
-        {/* Testimonials */}
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {visibleTestimonials.map((testimonial) => (
             <article
@@ -138,9 +100,8 @@ export function Testimonials() {
             </article>
           ))}
         </div>
-
-        {/* Indicateur de page */}
-        <div className="mt-6 flex justify-center gap-1.5">
+        <div className="mt-6 flex px-4 justify-between">
+          <div className="mt-6 flex justify-center gap-1.5">
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
               key={index}
@@ -148,16 +109,53 @@ export function Testimonials() {
               onClick={() => setCurrentPage(index)}
               aria-label={`Afficher les commentaires ${index + 1}`}
               className={`
-                h-1.5 rounded-full transition-all duration-300
+                h-1.5 rounded-full transition-all duration-300 
                 ${
                   currentPage === index
-                    ? "w-7 bg-primary"
-                    : "w-1.5 bg-border"
+                    ? "w-7 bg-yelloAccent"
+                    : "w-1.5 bg-primary"
                 }
               `}
             />
           ))}
+          </div>
+          <div className="mb-5 flex items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={handlePrevious}
+              disabled={currentPage === 0}
+              aria-label="Commentaires précédents"
+              className="
+                flex size-10 items-center justify-center
+                rounded-full border border-border bg-white
+                text-onBackground shadow-sm
+                transition
+                hover:border-primary hover:bg-primary hover:text-white
+                disabled:pointer-events-none disabled:opacity-30
+              "
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentPage === totalPages - 1}
+              aria-label="Commentaires suivants"
+              className="
+                flex size-10 items-center justify-center
+                rounded-full border border-border bg-white
+                text-onBackground shadow-sm
+                transition
+                hover:border-primary hover:bg-primary hover:text-white
+                disabled:pointer-events-none disabled:opacity-30
+              "
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
+        
       </div>
   );
 }
