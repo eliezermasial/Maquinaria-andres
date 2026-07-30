@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
 
+
 type MachineProps = {
     machine: Machine
 };

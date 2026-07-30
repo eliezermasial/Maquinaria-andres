@@ -114,7 +114,6 @@ export function PurchaseModal({machine,}: PurchaseModalProps)
       <div className="relative flex max-h-[95vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl
       bg-slate-50 shadow-2xl"
       >
-
         <Purchaseheader
           step={step}
           handleClose={handleClose}

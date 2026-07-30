@@ -11,8 +11,8 @@ type SimilarMachineProps = {
 
 export function SimilarMachinesGrid({similarMachines}: SimilarMachineProps) {
     return (
-        <div className="border-t border-border mt-10 py-7">
-            <div className="mb-10 flex flex-col gap-3 max-md:gap-10">
+        <div className="border-t border-border pt-7">
+            <div className="mb-10 flex flex-col gap-2 max-md:gap-10">
                 <p className={cn(typography.body,
                     "font-medium uppercase tracking-wider text-muted-foreground")}
                 >
@@ -32,8 +32,8 @@ export function SimilarMachinesGrid({similarMachines}: SimilarMachineProps) {
                 </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {similarMachines.map((machine) => (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 pb-10">
+                {similarMachines.slice(0,4).map((machine) => (
                     <MachineCard key={machine.id} machine={machine} />
                 ))}
             </div>
