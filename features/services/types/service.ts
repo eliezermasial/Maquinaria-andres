@@ -12,19 +12,19 @@ export type Product = {
     id: number,
     title: string,
     slug: string,
-    badge: string,
+    badge?: string,
     image: string | StaticImageData,
     description: string,
     dayPrice?: string,
-    totalPrice: string,
-    features: string[],
-    category: string;
-    cropType: string;
-    price: number;
-    unit: string;
-    rating: number;
-    reviews: number;
-    stock: boolean;
+    totalPrice?: string,
+    features?: string[],
+    category?: string;
+    cropType?: string;
+    price?: number;
+    unit?: string;
+    rating?: number;
+    reviews?: number;
+    stock?: boolean;
 };
 
 export type Service = {

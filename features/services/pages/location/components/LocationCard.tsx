@@ -50,7 +50,7 @@ export function LocationCard ({product}: LocationCardProps) {
                 </div>
                 <div>
                     <div className="flex flex-wrap gap-2 mb-2">
-                        {product.features.map((item: string) => (
+                        {product.features?.map((item: string) => (
                             <span key={item} className="rounded-full bg-muted px-3 py-1 text-xs">
                                 {item}
                             </span>
