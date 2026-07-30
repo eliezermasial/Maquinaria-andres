@@ -14,7 +14,7 @@ export type Machine = {
   image: string | StaticImageData;
   category: string;
   brand: string;
-  price: string;
+  price: number;
   badge?: string;
   power?: number;
   hours?: number;

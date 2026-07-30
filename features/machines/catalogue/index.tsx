@@ -1,129 +1,113 @@
 "use client";
 
-import { SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
+
+import { ChangeEvent, useMemo, useState } from "react";
 import { machines } from "../machines";
 import { FilterCatalog } from "./components/FilterCatalog";
 import { CatalogGrid } from "./components/CatalogGrid";
 import { cn } from "@/lib/utils/cn";
 import { typography } from "@/lib/theme/typography";
+import { MobileFilterButton } from "@/components/ui/MobileFilterButton";
+import { Machine } from "../types/machine";
+import { useFilters } from "@/hooks/useFilters";
 
-
-const categories = [
-    "Tracteurs",
-    "Moissonneuses",
-    "Semoirs",
-    "Travail du sol",
-];
-
-const brands = [
-    "John Deere",
-    "Case IH",
-    "New Holland",
-];
 
 const triers = [
-  "Pertinence",
-  "Prix croissant",
-  "Prix décroissant",
-  "Nouveautés",
-]
+  { name: "Prix croissant", value: "price-asc" },
+  { name: "Prix décroissant", value: "price-desc" },
+  { name: "Pertinence", value: "relevance" },
+  { name: "Nouveautés", value: "newest" },
+];
 
 export function Catalogue () {
 
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [sort, setSort] = useState<string>("relevance");
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState<boolean>(false);
 
-  const toggleCategory = (category: string) => {
-    setSelectedCategories((current) =>
-      current.includes(category)
-        ? current.filter((item) => item !== category)
-        : [...current, category],
-    );
+  const filterConfig = useMemo(
+    () => ({
+      category: (machine: Machine) => machine.category,
+      brand: (machine: Machine) => machine.brand, 
+    }),[]
+  )
+
+  const {
+    filters,
+    filterOptions,
+    filteredItems,
+    setFilter,
+    resetFilters,} = 
+  useFilters(machines,filterConfig);
+  
+  const sortFilters = useMemo(() => {
+    const result = [...filteredItems];
+
+    switch (sort) {
+      case "price-asc":
+        return result.sort(
+          (a,b) => Number(a.price) - Number(b.price)
+        );
+      case "Prix décroissant":
+        return result.sort(
+          (b,a) => Number(b.price) - Number(a.price)
+        );
+      case "newest":
+        return result;
+
+      default:
+        return result
+    }
+  },[filteredItems, sort])
+
+  const handleTrie = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    setSort(value)
   };
 
-  const toggleBrand = (brand: string) => {
-    setSelectedBrands((current) =>
-      current.includes(brand)
-        ? current.filter((item) => item !== brand)
-        : [...current, brand],
-    );
-  };
-
-  const resetFilters = () => {
-    setSelectedCategories([]);
-    setSelectedBrands([]);
-  };
-
-  const filteredMachines = machines.filter((machine) => {
-    const categoryMatch =
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(machine.category);
-
-    const brandMatch =
-      selectedBrands.length === 0 ||
-      selectedBrands.includes(machine.brand);
-
-    return categoryMatch && brandMatch;
-  });
 
   return (
     <section className="bg-surface py-10 md:py-14">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Mobile filter button */}
-        <div className="mb-6 flex items-center justify-between lg:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-            className="flex items-center gap-2 rounded-xl border border-border
-            bg-white px-4 py-3 text-sm font-medium"
-          >
-            <SlidersHorizontal className="size-4" />
-            Filtres
-          </button>
-          <span className="text-sm text-muted-foreground">
-            {filteredMachines.length} résultats
-          </span>
-        </div>
-
+        <MobileFilterButton
+          mobileFiltersOpen={mobileFiltersOpen}
+          setMobileFiltersOpen={setMobileFiltersOpen}
+        />
         <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
           <FilterCatalog
             mobileFiltersOpen={mobileFiltersOpen}
             resetFilters={resetFilters}
-            categories={categories}
-            selectedCategories={selectedCategories}
-            toggleCategory={toggleCategory}
-            brands={brands}
-            selectedBrands={selectedBrands}
-            toggleBrand={toggleBrand}
+            filters={filters}
+            filterOptions={filterOptions}
+            setFilter={setFilter}
           />
 
           <div className="min-w-0">
-            <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="mb-7 max-md:mt-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 className={cn(typography.h2,"sm:text-3xl")} >
-                  Tracteurs Agricoles
+                <h2 className={cn("text-2xl font-bold")}>
+                  Tracteurs trouvés
+                  <span className="ml-5 text-muted-foreground text-base">
+                    {filteredItems.length}
+                  </span>
                 </h2>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Affichage de {filteredMachines.length} résultats
-                </p>
               </div>
               <div className="flex items-center gap-2 self-start sm:self-auto">
                 <span className="text-xs text-muted-foreground">
                   Trier par :
                 </span>
                 <select
+                  value={sort}
+                  onChange={handleTrie}
                   className="rounded-lg border border-border bg-white px-3 py-2 text-xs font-medium outline-none"
                 >
                   {triers.map((item) => (
-                    <option key={item} value={item}>{item}</option>
+                    <option key={item.value} value={item.value}>{item.name}</option>
                   ))}
                 </select>
               </div>
             </div>
             <CatalogGrid
-              filteredMachines={filteredMachines}
+              filteredMachines={sortFilters}
               resetFilters={resetFilters}
             />
           </div>

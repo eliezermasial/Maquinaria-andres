@@ -30,7 +30,7 @@ export function MachineCard ({machine}: MachineProps) {
                         {machine.badge}
                     </Badge>
                 )}
-                <button className="absolute right-4 top-3 flex h-10 w-10 md:h-8 md:w-8 items-center
+                <button className="absolute right-4 top-2 flex h-10 w-10 md:h-8 md:w-8 items-center
                     justify-center rounded-full bg-white shadow"
                 >
                   <Heart size={18} />
@@ -39,12 +39,15 @@ export function MachineCard ({machine}: MachineProps) {
 
             <CardContent className="space-y-4 p-5">
                 <div>
-                    <CardParagraphy className="text-xs uppercase tracking-wider text-muted-foreground">
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground">
                         {machine.category}
-                    </CardParagraphy>
+                    </span>
                     <CardTitle className="mt-1 text-2xl font-semibold text-onBackground">
                         {machine.title}
                     </CardTitle>
+                    <CardParagraphy className="text-xs uppercase tracking-wider text-muted-foreground">
+                        {machine.engine}
+                    </CardParagraphy>
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="font-semibold text-primary">
@@ -53,7 +56,6 @@ export function MachineCard ({machine}: MachineProps) {
 
                     <Link
                         href={`/machines/${machine.slug}`}
-
                         className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100
                         text-primary transition hover:bg-primary hover:text-white"
                     >

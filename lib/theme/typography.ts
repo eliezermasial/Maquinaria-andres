@@ -5,7 +5,7 @@ export const typography = {
     h1: "text-4xl md:text-5xl font-bold",
 
     h2: "text-3xl md:text-4xl font-semibold leading-tight",
-    h3: "text-2xl font-semibold",
+    h3: "text-2xl font-semibold uppercase tracking-wider",
 
     bodyLg: "text-lg leading-8",
     body: "text-base leading-7",

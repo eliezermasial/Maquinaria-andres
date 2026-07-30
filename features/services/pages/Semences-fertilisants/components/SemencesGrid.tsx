@@ -7,7 +7,6 @@ import { Container } from "@/components/ui/container";
 import type { Product} from "@/features/services/types/service";
 import { useFilters } from "@/hooks/useFilters";
 import { ChangeEvent, useMemo, useState } from "react";
-import { SlidersHorizontal } from "lucide-react";
 import { MobileFilterButton } from "@/components/ui/MobileFilterButton";
 
 
