@@ -1,46 +1,32 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { Card, CardContent, CardHeader, CardParagraphy, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Product } from "@/features/services/types/service";
 
 
 
 type ProductCardProps = {
-  title: string;
-  category: string;
-  price: string;
-  unit: string;
-  image: StaticImageData;
-  badge?: string;
-  rating: number;
-  reviews: number;
+  product: Product;
 };
 
-export function SemenceCard({
-  title,
-  category,
-  price,
-  unit,
-  image,
-  badge,
-  rating,
-  reviews,
-}: ProductCardProps) {
+export function SemenceCard({ product }: ProductCardProps) {
+
   return (
     <Card className="group w-full overflow-hidden rounded-2xl border border-border
      bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <CardHeader className="relative h-50 overflow-hidden">
         <Image
-          src={image}
-          alt={title}
+          src={product.image}
+          alt={product.title}
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
         />
-        {badge && (
+        {product.badge && (
           <Badge className="absolute left-3 top-3 bg-yelloAccent border-yelloAccent px-3 py-1
             text-xs uppercase text-onBackground">
-            {badge}
+            {product.badge}
           </Badge>
         )}
         <button className="absolute right-3 top-3 flex h-10 w-10 items-center
@@ -53,40 +39,34 @@ export function SemenceCard({
       <CardContent className="space-y-4 p-5">
         <div>
           <span className="text-xs uppercase tracking-wider text-muted-foreground">
-              {category}
+            {product.category}
           </span>
-
           <CardTitle className="mt-2">
-            {title}
+            {product.title}
           </CardTitle>
-
           <CardParagraphy className="mb-2">
-            Sac de 25kg. Haute résistance aux
-            maladies et rendement exceptionnel
-            en sols limoneux.
+            {product.description}
           </CardParagraphy>
         </div>
-
         <div className="flex items-center gap-1">
           <Star
             size={14}
             className="fill-yelloAccent text-yellow-400"
           />
           <span className="text-sm">
-            {rating}
+            {product.rating}
           </span>
           <span className="text-sm text-muted-foreground">
-            ({reviews})
+            {product.reviews}
           </span>
         </div>
-
         <div className="flex items-end justify-between">
           <div>
             <span className="text-3xl font-bold text-primary">
-              {price}
+              {product.price}
             </span>
             <span className="ml-1 text-sm text-muted-foreground">
-              {unit}
+              {product.unit}
             </span>
           </div>
           <button className="flex h-11 w-11 items-center justify-center rounded-xl

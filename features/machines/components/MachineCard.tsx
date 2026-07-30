@@ -24,7 +24,7 @@ export function MachineCard ({machine}: MachineProps) {
                 />
                 {machine.badge && (
                     <Badge
-                        className="absolute left-4 top-4 bg-yelloAccent border-secondary px-3 py-1
+                        className="absolute left-4 top-4 bg-yelloAccent border-yelloAccent px-3 py-1
                         text-xs uppercase text-onBackground"
                     >
                         {machine.badge}

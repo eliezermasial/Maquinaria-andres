@@ -18,6 +18,13 @@ export type Product = {
     dayPrice?: string,
     totalPrice: string,
     features: string[],
+    category: string;
+    cropType: string;
+    price: number;
+    unit: string;
+    rating: number;
+    reviews: number;
+    stock: boolean;
 };
 
 export type Service = {

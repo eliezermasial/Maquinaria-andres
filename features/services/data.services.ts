@@ -1,9 +1,7 @@
 import { Tractor, CalendarDays, Wrench,
   Mountain, Sprout, Hammer
 } from "lucide-react";
-
 import image from "@/public/ImageHero.png";
-import { title } from "process";
 
 
 export const services = [
@@ -138,8 +136,6 @@ export const services = [
       "Maintenance incluse",
     ],
   },
-
-  
   {
     id: 4,
     slug: "preparation-sols",
@@ -203,6 +199,95 @@ export const services = [
       "Engrais NPK",
       "Fertilisants organiques",
       "Biostimulants",
+    ],
+    products: [
+      {
+        id: 1,
+        title: "Semence de maïs hybride",
+        slug: "semence-mais-hybride",
+        badge: "Premium",
+        image: image,
+        category: "Semences agricoles",
+        cropType: "Céréales",
+        description:
+          "Semence de maïs à haut rendement adaptée aux sols agricoles.",
+        price: 42.5,
+        unit: "/ sac de 25 kg",
+        rating: 4.8,
+        reviews: 48,
+        stock: true,
+      },
+
+      {
+        id: 2,
+        title: "Semence de soja",
+        slug: "semence-soja",
+        badge: "Nouveau",
+        image: image,
+        category: "Semences agricoles",
+        cropType: "Oléagineux",
+        description:
+          "Semence de soja sélectionnée pour améliorer le rendement.",
+        price: 38.9,
+        unit: "/ sac de 25 kg",
+        rating: 4.6,
+        reviews: 32,
+        stock: false,
+      },
+
+      {
+        id: 3,
+        title: "Engrais NPK 15-15-15",
+        slug: "engrais-npk-15-15-15",
+        image: image,
+        category: "Engrais NPK",
+        cropType: "Céréales",
+        description:
+          "Fertilisant complet adapté aux besoins des cultures.",
+        price: 29.5,
+        unit: "/ sac de 25 kg",
+        rating: 4.5,
+        reviews: 21,
+        stock: false,
+      },
+
+      {
+        id: 4,
+        title: "Fertilisant organique",
+        slug: "fertilisant-organique",
+        image: image,
+        category: "Fertilisants organiques",
+        cropType: "Fourragères",
+        description:
+          "Solution organique pour améliorer la fertilité des sols.",
+        price: 25,
+        unit: "/ sac de 25 kg",
+        rating: 4.7,
+        reviews: 17,
+        stock: true,
+      },
+    ],
+    prestations: [
+      {
+        title: "Préparation des terrains",
+        image: image,
+        description: "Semis de précision",
+      },
+      {
+        title: "Labour traditionnel",
+        image: image,
+        description: "Semis de précision",
+      },
+      {
+        title: "Labour réversible",
+        image: image,
+        description: "Semis de précision",
+      },
+      {
+        title: "Travail du sol",
+        image: image,
+        description: "Semis de précision",
+      }
     ],
     advantages: [
       "Produits certifiés",

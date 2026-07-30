@@ -12,39 +12,37 @@ type FilterCatalogProps = {
   toggleBrand: (brand: string) => void;
 };
 
-export function FilterCatalog (
-    {mobileFiltersOpen,resetFilters,categories,selectedCategories,
-        toggleCategory,brands,selectedBrands,toggleBrand}: FilterCatalogProps) {
-
-    return (
-          <aside
-            className={`
-              ${mobileFiltersOpen ? "block" : "hidden"}
-              rounded-2xl border border-border bg-white p-5
-              lg:block
-            `}
+export function FilterCatalog ({
+  mobileFiltersOpen,resetFilters,categories,
+  selectedCategories,toggleCategory,brands,
+  selectedBrands,toggleBrand}: FilterCatalogProps
+)
+{
+  return (
+    <aside
+      className={`
+        ${mobileFiltersOpen ? "block" : "hidden"}
+        rounded-2xl border border-border bg-white p-5 lg:block
+      `}
+    >
+      <div className="mb-7 flex items-center justify-between">
+        <h2 className="text-lg font-semibold text-onBackground">
+          Filtres
+        </h2>
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="text-xs text-muted-foreground hover:text-primary"
           >
-            <div className="mb-7 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-onBackground">
-                Filtres
-              </h2>
+            Réinitialiser
+          </button>
+        </div>
 
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="text-xs text-muted-foreground hover:text-primary"
-              >
-                Réinitialiser
-              </button>
-            </div>
-
-            {/* Catégories */}
-            <div className="border-b border-border pb-6">
-              <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Catégories
-              </h3>
-
-              <div className="space-y-3">
+          <div className="border-b border-border pb-6">
+            <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Catégories
+            </h3>
+            <div className="space-y-3">
                 {categories.map((category) => (
                   <label
                     key={category}
@@ -56,19 +54,16 @@ export function FilterCatalog (
                       onChange={() => toggleCategory(category)}
                       className="size-4 rounded border-border text-primary focus:ring-primary"
                     />
-
                     <span>{category}</span>
                   </label>
                 ))}
               </div>
             </div>
 
-            {/* Marques */}
             <div className="border-b border-border py-6">
               <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                 Marques
               </h3>
-
               <div className="space-y-3">
                 {brands.map((brand) => (
                   <label

@@ -6,10 +6,12 @@ type VentePageProps = {
     service: Service
 }
 export function SemencePage ({service}: VentePageProps) {
+    const products = service.products ?? [];
+    
     return (
         <>
             <Hero service={service} />
-            <SemencesGrid />
+            <SemencesGrid products={products} />
         </>
     )
 }

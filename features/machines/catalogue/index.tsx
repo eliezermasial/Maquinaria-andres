@@ -22,11 +22,11 @@ const brands = [
     "New Holland",
 ];
 
-const Triers = [
-    "Pertinence",
-    "Prix croissant",
-    "Prix décroissant",
-    "Nouveautés",
+const triers = [
+  "Pertinence",
+  "Prix croissant",
+  "Prix décroissant",
+  "Nouveautés",
 ]
 
 export function Catalogue () {
@@ -114,10 +114,9 @@ export function Catalogue () {
                   Trier par :
                 </span>
                 <select
-                  className="rounded-lg border border-border bg-white
-                  px-3py-2 text-xs font-medium outline-none"
+                  className="rounded-lg border border-border bg-white px-3 py-2 text-xs font-medium outline-none"
                 >
-                  {Triers.map((item) => (
+                  {triers.map((item) => (
                     <option key={item} value={item}>{item}</option>
                   ))}
                 </select>
