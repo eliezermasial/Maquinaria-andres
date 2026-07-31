@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHero } from "./components/SectionHero";
 import { ServicesGrid } from "@/features/services/components/ServicesGrid";
 import { MachinesGrid } from "@/features/machines/components/MachinesGrid";
-import { Testimonials } from "@/features/testimonials/components";
+import { Testimonials } from "@/features/testimonials";
 import { SectionTrust } from "./components/SectionTrust";
 
 
@@ -132,35 +132,36 @@ export default async function Home() {
       </Section>
 
       <Section className="bg-primary">
-      <Container>
-        <div className="mx-auto max-w-3xl text-center text-white">
-          <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-            Prêt à booster votre exploitation ?
-          </h2>
+        <Container>
+          <div className="mx-auto max-w-3xl text-center text-white">
+            <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              Prêt à booster votre exploitation ?
+            </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
-            Nos experts sont à votre disposition pour étudier vos besoins et
-            vous proposer la solution la plus performante au meilleur prix.
-          </p>
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">
+              Nos experts sont à votre disposition pour étudier vos besoins et
+              vous proposer la solution la plus performante au meilleur prix.
+            </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
-              type="button"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-yellow-400 px-6 py-3 text-sm font-semibold text-primary transition hover:bg-yellow-300 sm:w-auto"
-            >
-              Demander une étude personnalisée
-            </button>
-
-            <button
-              type="button"
-              className="w-full rounded-md bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:bg-white/90 sm:w-auto"
-            >
-              Contacter latelier
-            </button>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <button
+                type="button"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-yellow-400
+                px-6 py-3 text-sm font-semibold text-primary transition hover:bg-yellow-300 sm:w-auto"
+              >
+                Demander une étude personnalisée
+              </button>
+              <button
+                type="button"
+                className="w-full rounded-md bg-white px-6 py-3 text-sm font-semibold
+                text-primary transition hover:bg-white/90 sm:w-auto"
+              >
+                Contacter latelier
+              </button>
+            </div>
           </div>
-        </div>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
     </div>
   );
 }
