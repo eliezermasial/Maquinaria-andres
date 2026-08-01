@@ -1,8 +1,8 @@
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardParagraphy, CardTitle } from "@/components/ui/card";
 import { Machine } from "@/features/machines/types/machine";
 import Image from "next/image";
-import { ShoppingCart, Eye} from "lucide-react";
+import { ShoppingCart, Star, Heart} from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
 
@@ -14,77 +14,80 @@ type LocationCardProps = {
 export function LocationCard ({machine}: LocationCardProps) {
     return (
         <motion.div
-    layout
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -30 }}
-    transition={{ duration: 0.3 }}
->
-        
-        <Card className="w-full overflow-hidden rounded-2xl border border-border bg-white
-            transition hover:-translate-y-1 hover:shadow-xl"
+          layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -30 }} transition={{ duration: 0.3 }}
         >
-            <CardHeader className="relative h-60">
-                <Image
+        <Link href={`/machines/${machine.slug}`}>
+            <Card className="group w-full overflow-hidden rounded-2xl border border-border
+            bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+                <CardHeader className="relative h-50 overflow-hidden">
+                    <Image
                     src={machine.image}
                     alt={machine.title}
                     fill
-                    className="object-cover"
-                />
-                {machine.badge && (
-                    <Badge className="absolute left-4 top-4 bg-primary px-3
-                        py-1 text-xs font-semibold text-white"
-                    >
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    {machine.badge && (
+                    <Badge className="absolute left-3 top-3 bg-yelloAccent border-yelloAccent px-3 py-1
+                        text-xs uppercase text-onBackground">
                         {machine.badge}
                     </Badge>
-                )}
-            </CardHeader>
-            <CardContent className="space-y-5 p-5">
-                <div className="flex justify-between gap-4 items-center">
-                    <span className="rounded-full bg-surface-neutral px-3 py-1 text-xs">
+                    )}
+                    <button className="absolute right-3 top-2 flex h-10 w-10 items-center
+                    justify-center rounded-full bg-white shadow transition hover:text-primary"
+                    >
+                    <Heart size={18} />
+                    </button>
+                </CardHeader>
+                
+                <CardContent className="space-y-4 p-5">
+                    <div>
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground">
                         {machine.category}
                     </span>
-                    <div className="flex justify-between gap-2 mb-2">
-                        {machine.featured ? (
-                            <span className="rounded-full bg-surface-success px-3 py-1 text-xs">
-                                disponible
-                            </span>
-                        ): (
-                            <span className="rounded-full bg-surface-danger px-3 py-1 text-xs font-bold">
-                                indisponible
-                            </span>
-                        )}
+                    <CardTitle className="mt-2">
+                        {machine.title}
+                    </CardTitle>
+                    <CardParagraphy className="mb-2">
+                        {machine.description}
+                    </CardParagraphy>
                     </div>
-                </div>
-                <CardTitle className="text-xl font-bold">
-                    {machine.title}
-                </CardTitle>
-                <div className="flex items-center justify-between">
-                    <div className="flex flex-col gap-0.5">
-                        <small className="text-muted-foreground font-normal">
-                            À partir de
-                        </small>
-                        <span className="font-semibold text-primary">
-                            {machine.price} FC
+                    <div className="flex items-center gap-1">
+                    <Star
+                        size={14}
+                        className="fill-yelloAccent text-yellow-400"
+                    />
+                    <span className="text-sm">
+                        4.85
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                        machine.reviews
+                    </span>
+                    </div>
+                    <div className="flex items-end justify-between">
+                    <div>
+                        <span className="text-3xl font-bold text-primary">
+                        {machine.price}
+                        </span>
+                        <span className="ml-1 text-sm text-muted-foreground">
+                        5 / jours
                         </span>
                     </div>
-
-                    <button className="rounded-xl bg-yelloAccent px-3 py-2 font-semibold cursor-pointer
-                        transition hover:bg-primary hover:text-white"
+                    <button className="flex h-11 w-11 items-center justify-center rounded-xl
+                        bg-yelloAccent text-onBackground transition hover:bg-primary hover:text-white"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }}
                     >
-                        <ShoppingCart size={20} className="mr-2" />
+                        <ShoppingCart size={18} />
                     </button>
-                    
-                    <Link
-                        href={`/machines/${machine.slug}`}
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100
-                        text-primary transition hover:bg-primary hover:text-white"
-                    >
-                        <Eye size={18} />
-                    </Link>
-                </div>
-            </CardContent>
-        </Card>
+                    </div>
+                </CardContent>
+            </Card>
+        </Link>
         </motion.div>
-    )
+    );
+    
 }

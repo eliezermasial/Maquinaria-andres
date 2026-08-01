@@ -17,15 +17,6 @@ const Typecarburant = [
     {name: "electrique"},
 ];
 
-const Marques = [
-    {name: "toyota"},
-    {name: "mercedes"},
-    {name: "New Holland"},
-    {name: "Massey Ferguson"},
-    {name: "Toutes les marques"},
-];
-
-
 type FilterLocation = {
     filters: Record<string, string[]>,
     filterOptions: Record<string, string[]>,
@@ -43,10 +34,10 @@ export function FilterLocation ({filterOptions,filters,setFilter,resetFilters, m
 
     return (
         <aside className={
-                `
-                ${mobileFiltersOpen ? "block" : "hidden"}
-                rounded-2xl border border-border bg-white p-5 lg:block
-                `
+            `
+            ${mobileFiltersOpen ? "block" : "hidden"}
+            rounded-2xl border border-border bg-white p-5 lg:block md:h-150
+            `
             }
         >
             <div className="mb-6 flex items-center justify-between">
