@@ -3,6 +3,7 @@ import { Heart, ShoppingCart, Star } from "lucide-react";
 import { Card, CardContent, CardHeader, CardParagraphy, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Product } from "@/features/services/types/service";
+import { motion } from "motion/react";
 
 
 
@@ -13,6 +14,10 @@ type ProductCardProps = {
 export function SemenceCard({ product }: ProductCardProps) {
 
   return (
+    <motion.div
+      layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }} transition={{ duration: 0.3 }}
+    >
     <Card className="group w-full overflow-hidden rounded-2xl border border-border
      bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
@@ -77,5 +82,6 @@ export function SemenceCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

@@ -8,6 +8,7 @@ import type { Product} from "@/features/services/types/service";
 import { useFilters } from "@/hooks/useFilters";
 import { ChangeEvent, useMemo, useState } from "react";
 import { MobileFilterButton } from "@/components/ui/MobileFilterButton";
+import {AnimatePresence} from "motion/react";
 
 
 const triers = [
@@ -42,14 +43,9 @@ export function SemencesGrid({products}: SemenceProductProps) {
   } = useFilters(products, filterConfig);
 
   const handleCategory = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-
-    if(!value) {
-      resetFilters();
-      return;
-    }
     resetFilters();
-    setFilter("category", value);
+    const value = e.target.value;
+    if(value) setFilter("category", value);
   };
 
   const sortedProducts = useMemo(() => {
@@ -118,14 +114,35 @@ export function SemencesGrid({products}: SemenceProductProps) {
                 </select>
               </div>
             </div>
+            {sortedProducts.length > 0 ? (
             <div className="grid grid-cols-1 justify-items-center gap-6 md:grid-cols-3 ">
-              {sortedProducts.map((product) => (
-                <SemenceCard
-                  key={product.id}
-                  product={product}
-                />
-              ))}
+              <AnimatePresence mode="popLayout">
+                {sortedProducts.map((product) => (
+                  <SemenceCard
+                    key={product.id}
+                    product={product}
+                  />
+                ))}
+              </AnimatePresence>
             </div>
+            ) : (
+            <div className="flex min-h-80 items-center justify-center rounded-2xl border
+              border-dashed border-border bg-white"
+            >
+              <div className="text-center">
+                <p className="font-semibold">Aucun résultat</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                      Essayez de modifier vos filtres.
+                </p>
+                <button
+                    onClick={resetFilters}
+                    className="mt-4 rounded-lg bg-primary px-4 py-2 text-sm text-white"
+                >
+                  Réinitialiser les filtres
+                </button>
+              </div>
+            </div>
+            )}
           </div>
         </div>
       </Container>

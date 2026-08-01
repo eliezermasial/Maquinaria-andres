@@ -1,30 +1,20 @@
-import { Container } from "@/components/ui/container";
 import { Hero } from "../components/Hero";
 import { Service } from "../../types/service";
-import { FiltreLocation } from "./components/FiltreLaction";
 import { LocationGrid } from "./components/LocationGrid";
+import { getMachines } from "@/features/machines/services/machine.service";
 
 
-
-type locationPageProps = {
+type locationPageProps= {
     service: Service;
 };
 
-export function LocationPage({service}: locationPageProps) {
-    const products = service.products?? [];
+export async function LocationPage({service}: locationPageProps) {
+    const machines = await getMachines();
 
     return (
         <div>
             <Hero service={service} />
-            
-            <section className="bg-surface py-16">
-                <Container>
-                    <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
-                        <FiltreLocation/>
-                        <LocationGrid products={products}/>
-                    </div>
-                </Container>
-            </section>
+            <LocationGrid machines={machines}/>
         </div>
     )
 }

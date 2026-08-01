@@ -10,6 +10,9 @@
   --muted-foreground: #71717a;
   --border: #e4e4e7;
   --surface: #f8f9fb;
+  --surface-neutral: #e5e7eb;
+  --surface-success: #86efac;
+  --surface-danger: #fca5a5;
   --error: #ba1a1a;
   --success: #16a34a;
   --onMuted: #F3F4F6;
@@ -28,6 +31,9 @@
   --color-yelloAccent: var(--yellowAcent);
   --color-secondary: var(--secondary);
   --color-surface: var(--surface);
+  --color-surface-neutral: var(--surface-neutral);
+  --color-surface-success: var(--surface-success);
+  --color-surface-danger: var(--surface-danger);
   --color-error: var(--error);
   --color-success: var(--success);
   --color-onMuted: var(--onMuted);

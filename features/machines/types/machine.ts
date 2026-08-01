@@ -19,6 +19,7 @@ export type Machine = {
   power?: number;
   hours?: number;
   transmission?: string;
+  description: string,
   year?: number;
   engine?: string;
   cylinders?: number;

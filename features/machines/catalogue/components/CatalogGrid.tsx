@@ -1,5 +1,6 @@
 import { MachineCard } from "../../components/MachineCard";
 import { Machine } from "../../types/machine";
+import { AnimatePresence } from "motion/react";
 
 
 type CatalogGridProps = {
@@ -12,12 +13,14 @@ export function CatalogGrid ({filteredMachines,resetFilters}: CatalogGridProps) 
     <>
       {filteredMachines.length > 0 ? (
         <div className="grid md:justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {filteredMachines.map((machine) => (
-            <MachineCard
-              key={machine.id}
-              machine={machine}
-            />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filteredMachines.map((machine) => (
+              <MachineCard
+                key={machine.id}
+                machine={machine}
+              />
+            ))}
+          </AnimatePresence>
         </div>
         )
         :
