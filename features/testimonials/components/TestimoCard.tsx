@@ -40,17 +40,15 @@ export function TestimoCard ({testimonial}: TestimonialProps) {
                 >
                   {testimonial.initials}
                 </div>
-
-                <div className="min-w-0">
-                  <h3 className="truncate text-xs font-semibold text-onBackground">
-                    {testimonial.name}
-                  </h3>
-
-                  <p className="truncate text-[10px] text-muted-foreground">
-                    {testimonial.role}
-                  </p>
-                </div>
-              </div>
+        <div className="min-w-0">
+          <h3 className="truncate text-xs font-semibold text-onBackground">
+            {testimonial.name}
+          </h3>
+          <p className="truncate text-[10px] text-muted-foreground">
+            {testimonial.role}
+          </p>
+        </div>
+      </div>
     </Card>
   )
 }
