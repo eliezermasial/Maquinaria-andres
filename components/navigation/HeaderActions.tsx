@@ -29,11 +29,11 @@ export function HeaderActions() {
             href={link.href}
             aria-label={link.label}
             className={`
-              relative flex items-center justify-center transition
+              relative flex items-center justify-center transition text-onBackground
               ${
                 isCart && totalCarts === 0
-                  ? "pointer-events-none cursor-not-allowed opacity-50"
-                  : "text-onBackground hover:text-foreground"
+                  ? "pointer-events-none cursor-not-allowed"
+                  : " hover:text-foreground"
               }
             `}
           >

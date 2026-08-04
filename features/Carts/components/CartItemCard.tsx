@@ -62,7 +62,7 @@ export function CartItemCard({machine, removeFromCart, increaseQuantity, desIncr
                         </Button>
                     </div>
                     
-                    <div className="flex justify-between md:hidden gap-2">
+                    <div className="flex justify-between items-center md:hidden gap-2">
                         <CardParagraphy className={cn(typography.body, "text-gray-900/55")}>
                             Quantity : 
                             <span className="ml-5 text-gray-900/55 font-bold">
@@ -71,12 +71,16 @@ export function CartItemCard({machine, removeFromCart, increaseQuantity, desIncr
                         </CardParagraphy>
                         <div className="flex gap-2">
                             <Button className="bg-surface hover:bg-primary transition cursor-pointer
-                                hover:text-yelloAccent p-0 shadow border border-surface h-6 rounded-md">
+                                hover:text-yelloAccent p-0 shadow border border-surface h-6 rounded-md"
+                                  disabled={machine.quantity <= 1}
+                                onClick={() => desIncreaseQuantity(machine.id)}
+                            >
                                 <MinusCircle size={15}/>
                             </Button >
                             <Button className="bg-surface hover:bg-primary cursor-pointer transition p-0 shadow
                                 hover:text-yelloAccent border border-surface h-6 rounded-md"
-                                onClick={() => console.log(machine.quantity + 1)}
+                                disabled={machine.quantity >= 20}
+                                onClick={() => increaseQuantity(machine.id)}
                             >
                                 <PlusCircle size={15}/>
                             </Button>
@@ -86,12 +90,12 @@ export function CartItemCard({machine, removeFromCart, increaseQuantity, desIncr
             </CardHeader>
 
             <div className="flex justify-between max-md:my-4 gap-3 items-center px-3">
-                <Badge className=" max-md:flex md:hidden bg-yelloAccent h-5 max-md:w-52 rounded-md border-yelloAccent
-                    px-3 py-3 text-xs uppercase text-onBackground"
+                <Badge className=" max-md:flex md:hidden bg-yelloAccent h-5 max-md:w-52 rounded-md
+                    border-yelloAccent px-3 py-3 text-xs uppercase text-onBackground"
                 >
                     EN STOCK
                 </Badge>
-                <div>
+                <div className="flex gap-3">
                     <Button className="bg-transparent hover:bg-primary transition  hover:text-yelloAccent
                         p-0 shadow border border-surface h-10 rounded-md cursor-pointer">
                         <Heart size={20} />
@@ -106,8 +110,8 @@ export function CartItemCard({machine, removeFromCart, increaseQuantity, desIncr
             </div>
 
             <CardContent className="flex flex-col gap-3  max-md:px-3 max-md:py-3">
-                <Badge className=" max:hidden bg-yelloAccent h-5 rounded-md border-yelloAccent
-                    px-3 py-3 text-xs uppercase text-onBackground"
+                <Badge className=" max-md:hidden md:flex bg-yelloAccent h-5 px-3 py-3
+                    rounded-md border-yelloAccent text-xs uppercase text-onBackground"
                 >
                     EN STOCK
                 </Badge>

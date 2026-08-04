@@ -9,6 +9,7 @@ const links = [
   { href: "/home", label: "Accueil" },
   { href: "/about", label: "À propos" },
   { href: "/blog", label: "Blog" },
+  {href: "/services/location", label: "Location"},
 ];
 
 type PublicNavigationProps = {

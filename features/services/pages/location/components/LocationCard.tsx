@@ -54,7 +54,7 @@ export function LocationCard ({machine}: LocationCardProps) {
                         <span className="text-xs uppercase tracking-wider text-muted-foreground">
                             {machine.category}
                         </span>
-                        <button className="flex h-8 w-11 items-center justify-center rounded-full
+                        <button className="flex h-10 w-10 shadow shadow-amber-500 hover:shadow-primary items-center justify-center rounded-full
                             bg-primary text-yelloAccent transition hover:bg-yelloAccent hover:text-primary"
                             value={machine.id}
                             onClick={(e) => {
@@ -64,7 +64,7 @@ export function LocationCard ({machine}: LocationCardProps) {
                                 addToCart(machine)
                             }}
                         >
-                            <ShoppingCart size={18} />
+                            <ShoppingCart size={20} />
                         </button>
                     </div>
                     <Link href={`/machines/${machine.slug}`} className="mt-0">

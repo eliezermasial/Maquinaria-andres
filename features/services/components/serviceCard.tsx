@@ -1,7 +1,8 @@
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
-import type { Service } from "../types/service";
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import type { Service } from "../types/service";
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
+
 
 
 type ServiceProps = {
@@ -9,7 +10,9 @@ type ServiceProps = {
 }
 
 export function ServiceCard({service}: ServiceProps) {
-    const Icon = service.icon
+
+    const Icon = service.icon;
+
     return (
         <Card 
             className="group rounded-2xl border border-border bg-white p-6 transition-all duration-300

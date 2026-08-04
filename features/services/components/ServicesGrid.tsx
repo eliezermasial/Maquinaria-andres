@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getServices } from "../services/service.service";
-import { ServiceCard } from "./serviceCard";
 import { Service } from "../types/service";
+import { useEffect, useState } from "react";
+import { ServiceCard } from "./serviceCard";
+import { getServices } from "../services/service.service";
+
 
 
 export function ServicesGrid() {

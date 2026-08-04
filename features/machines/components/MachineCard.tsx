@@ -1,9 +1,12 @@
-import { Card, CardHeader, CardContent, CardTitle, CardParagraphy } from "@/components/ui/card";
-import Image  from "next/image";
-import { Eye, Heart} from "lucide-react";
-import type { Machine } from "../types/machine";
+"use client";
+
 import Link from "next/link";
+import Image  from "next/image";
 import { Badge } from "@/components/ui/badge";
+import type { Machine } from "../types/machine";
+import { Heart, ShoppingCart, Star} from "lucide-react";
+import { useCart } from "@/features/Carts/hooks/useCart";
+import { Card, CardHeader, CardContent, CardTitle, CardParagraphy } from "@/components/ui/card";
 
 
 
@@ -12,11 +15,13 @@ type MachineProps = {
 };
 
 export function MachineCard ({machine}: MachineProps) {
+
+    const {addToCart} = useCart();
     return (
-        <Card className="group overflow-hidden rounded-2xl border p-0 border-border
+        <Card className="group w-full overflow-hidden rounded-2xl border border-border
             bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
         >
-            <CardHeader className="relative h-56 overflow-hidden">
+            <CardHeader className="relative h-50 overflow-hidden">
                 <Image
                   src={machine.image}
                   alt={machine.title}
@@ -39,29 +44,50 @@ export function MachineCard ({machine}: MachineProps) {
             </CardHeader>
 
             <CardContent className="space-y-4 p-5">
-                <div>
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                        {machine.category}
-                    </span>
-                    <CardTitle className="mt-1 text-2xl font-semibold text-onBackground">
-                        {machine.title}
-                    </CardTitle>
-                    <CardParagraphy className="text-xs uppercase tracking-wider text-muted-foreground">
-                        {machine.engine}
-                    </CardParagraphy>
-                </div>
-                <div className="flex items-center justify-between">
-                    <span className="font-semibold text-primary">
-                        {machine.price}
-                    </span>
-
-                    <Link
-                        href={`/machines/${machine.slug}`}
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100
-                        text-primary transition hover:bg-primary hover:text-white"
-                    >
-                        <Eye size={18} />
+                    <div className="flex justify-between items-center">
+                        <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                            {machine.category}
+                        </span>
+                    </div>
+                    <Link href={`/machines/${machine.slug}`} className="mt-0">
+                        <div>
+                            <CardTitle className="mt-2">
+                                {machine.title}
+                            </CardTitle>
+                            <CardParagraphy className="mb-2">
+                                {machine.description}
+                            </CardParagraphy>
+                        </div>
+                        <div className="flex items-center gap-1">
+                            <Star
+                                size={14}
+                                className="fill-yelloAccent text-yellow-400"
+                            />
+                            <span className="text-sm">4.85</span>
+                        </div>
                     </Link>
+                    <div className="flex items-end mt-3 justify-between">
+                        <div>
+                            <span className="text-3xl font-bold text-primary">
+                                {machine.price}
+                            </span>
+                        </div>
+                       
+                    <button 
+                        className="flex bg-primary font-semibold py-1 capitalize text-md h-10 w-10 px-2
+                            justify-center rounded-xl transition hover:bg-yelloAccent text-white items-center
+                            hover:text-onBackground 
+                        "
+                        value={machine.id}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            addToCart(machine)
+                        }}
+                    >
+                        <ShoppingCart size={20} />
+                    </button>
                 </div>
             </CardContent>
         </Card>
