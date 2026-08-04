@@ -4,7 +4,7 @@ import { useCart } from "@/features/Carts/hooks/useCart";
 
 
 const links = [
-  { href: "/favori", label: "favori", icon: Heart },
+  { href: "/wishlist", label: "wishlist", icon: Heart },
   { href: "/cart", label: "cart", icon: ShoppingCart },
   { href: "/login", label: "connexion", icon: User },
 ];
@@ -28,8 +28,14 @@ export function HeaderActions() {
             key={link.href}
             href={link.href}
             aria-label={link.label}
-            className="relative flex items-center justify-center text-onBackground
-            transition hover:text-foreground"
+            className={`
+              relative flex items-center justify-center transition
+              ${
+                isCart && totalCarts === 0
+                  ? "pointer-events-none cursor-not-allowed opacity-50"
+                  : "text-onBackground hover:text-foreground"
+              }
+            `}
           >
             <Icon className="size-5 sm:size-6" />
             {isCart && totalCarts > 0 && (

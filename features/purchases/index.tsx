@@ -191,12 +191,7 @@ function StepLine({active,}: StepLineProps) {
   );
 }
 
-function PaymentMethod({
-  label,
-  icon,
-  selected,
-  onClick,
-}: PaymentMethodProps) {
+function PaymentMethod({ label, icon, selected, onClick,}: PaymentMethodProps) {
   return (
     <button
       type="button"

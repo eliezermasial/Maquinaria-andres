@@ -21,7 +21,7 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const baseClassName =
-  "inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex h-5 items-center justify-center rounded-md px-4 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 export function Button(props: ButtonProps | ButtonLinkProps) {
   const variant = props.variant ?? "primary";

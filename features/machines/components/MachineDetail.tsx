@@ -9,6 +9,7 @@ import { MachineAttribute } from "./MachineAttribute";
 import { getMachines } from "../services/machine.service";
 import { useEffect, useState } from "react";
 import { SimilarMachinesGrid } from "./SimilarMachinesGrid";
+import { useCart } from "@/features/Carts/hooks/useCart";
 
 
 
@@ -66,7 +67,8 @@ function DocumentItem({ icon, title, action,}: DocumentItemProps) {
 
 export function MachineDetail({ machine }: MachineDetailProps) {
   const [machines, setMachines] = useState<Machine[]>([]);
-    const [activeTab, setActiveTab] = useState<MachineTab>("Caractéristiques");
+  const {addToCart} = useCart();
+  const [activeTab, setActiveTab] = useState<MachineTab>("Caractéristiques");
   
   useEffect(() => {
 
@@ -98,6 +100,7 @@ export function MachineDetail({ machine }: MachineDetailProps) {
               machine={machine}
               DocumentItem={DocumentItem}
               Specification={Specification}
+              addToCart={addToCart}
             />
           </div>
         </Container>

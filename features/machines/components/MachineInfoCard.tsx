@@ -3,16 +3,17 @@ import { Machine } from "../types/machine";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { DocumentItemProps, SpecificationProps } from "./MachineDetail";
-import { CalendarDays, Download, ExternalLink, FileText, Heart, PlayCircle, Share2 } from "lucide-react";
+import { CalendarDays, Download, ExternalLink, FileText, Heart, PlayCircle, Share2, ShoppingCart } from "lucide-react";
 
 
 type MachineInfoCardProps = {
   machine: Machine,
   Specification:  ComponentType<SpecificationProps>,
   DocumentItem: ComponentType<DocumentItemProps>,
+  addToCart: (Machine: Machine) => void,
 };
 
-export function MachineInfoCard ({machine, DocumentItem, Specification} : MachineInfoCardProps) {
+export function MachineInfoCard ({machine, DocumentItem, Specification, addToCart} : MachineInfoCardProps) {
   return (
     <Card className="h-fit rounded-2xl border border-border bg-white p-5 shadow-sm sm:p-6">
       <div className="border-b border-border pb-5">
@@ -51,15 +52,14 @@ export function MachineInfoCard ({machine, DocumentItem, Specification} : Machin
             {machine.price}
           </span>
           <span className="mb-1 text-xs text-muted-foreground">
-            HT
+            HT $
           </span>
         </div>
         <span className="mt-2 inline-flex rounded-full bg-yelloAccent
           px-2.5 py-1 text-[10px] font-semibold uppercase text-onBackground"
         >
-          En stock
+            En stock
         </span>
-
         <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Link
             href={`/machines/${machine.slug}/purchase`}
@@ -70,14 +70,24 @@ export function MachineInfoCard ({machine, DocumentItem, Specification} : Machin
             Demander un devis
           </Link>
           <Link
-          href={`/machines/${machine.slug}/purchase`}
-                  
+            href={`/machines/${machine.slug}/purchase`}
             className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-4
             text-sm font-semibold text-white transition hover:opacity-90"
           >
             <CalendarDays className="size-4" />
             Acheter maintenant
           </Link>
+          <button className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-4
+            text-sm font-semibold text-white hover:text-yelloAccent transition hover:opacity-90"
+            value={machine.id}
+            onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  addToCart(machine)
+            }}
+          >
+            <ShoppingCart size={22} />
+          </button>
         </div>
       </div>
 
