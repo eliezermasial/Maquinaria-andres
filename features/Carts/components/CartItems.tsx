@@ -18,7 +18,7 @@ export function CartItems() {
     const router = useRouter();
     const {cartItems,removeFromCart,increaseQuantity,desIncreaseQuantity} = useCart()
 
-    if(cartItems.length === 0) return router.back();
+    //if(cartItems.length === 0) return router.back();
 
     return(
         <>

@@ -18,9 +18,9 @@ export function Testimonials() {
     testimonials.length / ITEMS_PER_PAGE
   );
 
-  const standItems = currentPage * ITEMS_PER_PAGE;
+  const startItems = currentPage * ITEMS_PER_PAGE;
   const VisiblesItemsPerPages = testimonials.slice(
-    standItems, standItems + ITEMS_PER_PAGE
+    startItems, startItems + ITEMS_PER_PAGE
   );
 
   const handleNext = () => {
