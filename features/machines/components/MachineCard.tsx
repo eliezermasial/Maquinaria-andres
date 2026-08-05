@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import type { Machine } from "../types/machine";
 import { Heart, ShoppingCart, Star} from "lucide-react";
 import { useCart } from "@/features/Carts/hooks/useCart";
+import { useFavorites } from "@/features/wishlists/hooks/useFavorites";
 import { Card, CardHeader, CardContent, CardTitle, CardParagraphy } from "@/components/ui/card";
 
 
@@ -17,6 +18,8 @@ type MachineProps = {
 export function MachineCard ({machine}: MachineProps) {
 
     const {addToCart} = useCart();
+    const {toggleFavorites, isFavorite} = useFavorites();
+
     return (
         <Card className="group w-full overflow-hidden rounded-2xl border border-border
             bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -37,42 +40,43 @@ export function MachineCard ({machine}: MachineProps) {
                     </Badge>
                 )}
                 <button className="absolute right-4 top-2 flex h-10 w-10 md:h-8 md:w-8 items-center
-                    justify-center rounded-full bg-white shadow"
+                    justify-center rounded-full bg-white shadow cursor-pointer"
+                    onClick={() => toggleFavorites(machine)}
                 >
-                  <Heart size={18} />
+                    { isFavorite(machine.id) ? <Heart fill="currentColor" /> : <Heart size={18} />  }
+                  
                 </button>
             </CardHeader>
 
             <CardContent className="space-y-4 p-5">
-                    <div className="flex justify-between items-center">
-                        <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                            {machine.category}
+                <div className="flex justify-between items-center">
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                        {machine.category}
+                    </span>
+                </div>
+                <Link href={`/machines/${machine.slug}`} className="mt-0">
+                    <div>
+                        <CardTitle className="mt-2">
+                            {machine.title}
+                        </CardTitle>
+                        <CardParagraphy className="mb-2">
+                            {machine.description}
+                        </CardParagraphy>
+                    </div>
+                    <div className="flex items-center gap-1">
+                        <Star
+                            size={14}
+                            className="fill-yelloAccent text-yellow-400"
+                        />
+                        <span className="text-sm">4.85</span>
+                    </div>
+                </Link>
+                <div className="flex items-end mt-3 justify-between">
+                    <div>
+                        <span className="text-3xl font-bold text-primary">
+                            {machine.price}
                         </span>
                     </div>
-                    <Link href={`/machines/${machine.slug}`} className="mt-0">
-                        <div>
-                            <CardTitle className="mt-2">
-                                {machine.title}
-                            </CardTitle>
-                            <CardParagraphy className="mb-2">
-                                {machine.description}
-                            </CardParagraphy>
-                        </div>
-                        <div className="flex items-center gap-1">
-                            <Star
-                                size={14}
-                                className="fill-yelloAccent text-yellow-400"
-                            />
-                            <span className="text-sm">4.85</span>
-                        </div>
-                    </Link>
-                    <div className="flex items-end mt-3 justify-between">
-                        <div>
-                            <span className="text-3xl font-bold text-primary">
-                                {machine.price}
-                            </span>
-                        </div>
-                       
                     <button 
                         className="flex bg-primary font-semibold py-1 capitalize text-md h-10 w-10 px-2
                             justify-center rounded-xl transition hover:bg-yelloAccent text-white items-center

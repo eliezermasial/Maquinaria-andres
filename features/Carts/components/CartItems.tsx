@@ -18,22 +18,19 @@ export function CartItems() {
     const router = useRouter();
     const {cartItems,removeFromCart,increaseQuantity,desIncreaseQuantity} = useCart()
 
-    //if(cartItems.length === 0) return router.back();
-
     return(
         <>
-            <Section className="bg-surface py-16">
+            <Section className="bg-surface py-16 relative">
                 <Container>
-                    <div className="mb-10 rounded-xl flex max-md:flex-col max-md:gap-3
-                        justify-between items-center px-3 py-4"
+                    <div className="mb-10 rounded-xl flex justify-between bg-green-50/20 items-center px-3"
                     >
                         <h2 className={cn(typography.h2)} >Mon panier</h2>
-                        <p className={cn(typography.bodyLg, "text-onBackground")}>
+                        <p className={cn(typography.body, "text-onBackground")}>
                             Vous avez
-                            <span className={cn(typography.h3,"mx-3")}>
+                            <span className={cn(typography.h3,"mx-1")}>
                                 {cartItems.length}
                             </span>
-                            articles dans votre sélection
+                            articles
                         </p>
                     </div>
                     <div>
@@ -50,17 +47,9 @@ export function CartItems() {
                                         />
                                     ))
                                 )
-                                : null}
-                                <button className="inline-flex items-center gap-2 rounded-xl border px-6 py-3
-                                    border-primary bg-white hover:bg-primary hover:text-yelloAccent"
-                                    onClick={()=> router.back()}
-                                >
-                                    <ArrowLeft
-                                        size={18}
-                                        className="transition-transform group-hover:translate-x-1"
-                                    />
-                                    Continuer les achats
-                                </button>
+                                : (
+                                    <p className={cn(typography.bodyLg)}>votre panier est vide</p>
+                                )}
                             </div>
                             <CartDrawer cartItems={cartItems} />
                         </div>
@@ -68,7 +57,7 @@ export function CartItems() {
                 </Container>
             </Section>
 
-            <Section className="bg-onPrimary pt-15">
+            <Section className="bg-onPrimary pt-15 pb-20">
                 <Container>
                     <div className="mb-15 flex gap-10 px-3 max-md:flex-col justify-between">
                         <h2 className={cn(typography.h2, "max-md:text-center text-onBackground")} >
@@ -99,6 +88,18 @@ export function CartItems() {
                     </div>
 
                     <CartItemsGrid />
+
+                    <button className=" bottom-5 fixed right-10 flex h-11 w-11 items-center shadow shadow-white/10
+                        justify-center rounded-full
+                                bg-primary text-yelloAccent transition hover:bg-yelloAccent hover:text-primary
+                         border border-primary"
+                        onClick={()=> router.back()}
+                    >
+                        <ArrowLeft
+                            size={18}
+                            className="transition-transform group-hover:translate-x-1"
+                        />       
+                    </button>
                 </Container>
             </Section>
         </>
