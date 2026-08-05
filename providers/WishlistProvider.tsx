@@ -18,22 +18,24 @@ export function WishlistProvider({children}: {children: ReactNode}) {
     const [wishlists, setWishlists] = useState<Wishlist[]>([])
 
     const toggleFavorites = (machine: Machine) => {
-        const isFavorite = wishlists.some((item) => item.id === machine.id);
 
-        if(! isFavorite) {
-            setWishlists((prev) => [...prev, {
-                "id": machine.id,
-                "image": machine.image,
-                "title": machine.title,
-                "favorite": true,
-                "description": machine.description,
-                "slug": machine.slug,
-            }])
-        } else {
-            setWishlists((prev) => prev.filter((item) => item.id !== machine.id))
-        }
-        
-        return wishlists;
+        setWishlists((prev) => {
+            const isFavorite = prev.some((item) => item.id === machine.id);
+
+            if(! isFavorite) {
+
+                return [...prev, {
+                    "id": machine.id,
+                    "image": machine.image,
+                    "title": machine.title,
+                    "favorite": true,
+                    "description": machine.description,
+                    "slug": machine.slug,
+                }]
+            }
+
+            return prev.filter((item) => item.id !== machine.id)
+        })
     }
     
     const isFavorite = (id: number) => {

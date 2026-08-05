@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import Image  from "next/image";
+import { cn } from "@/lib/utils/cn";
 import { Badge } from "@/components/ui/badge";
 import type { Machine } from "../types/machine";
 import { Heart, ShoppingCart, Star} from "lucide-react";
 import { useCart } from "@/features/Carts/hooks/useCart";
 import { useFavorites } from "@/features/wishlists/hooks/useFavorites";
 import { Card, CardHeader, CardContent, CardTitle, CardParagraphy } from "@/components/ui/card";
+
 
 
 
@@ -39,12 +41,16 @@ export function MachineCard ({machine}: MachineProps) {
                         {machine.badge}
                     </Badge>
                 )}
-                <button className="absolute right-4 top-2 flex h-10 w-10 md:h-8 md:w-8 items-center
-                    justify-center rounded-full bg-white shadow cursor-pointer"
+
+                <button className={cn("absolute right-4 top-2 flex h-10 w-10 md:h-8 md:w-8 items-center justify-center rounded-full shadow cursor-pointer",
+                    isFavorite(machine.id) ? "bg-primary transition" : "bg-white transition"
+                    )}
                     onClick={() => toggleFavorites(machine)}
                 >
-                    { isFavorite(machine.id) ? <Heart fill="currentColor" /> : <Heart size={18} />  }
-                  
+                    <Heart
+                        size={18}
+                        className={cn(isFavorite(machine.id) ? "text-yelloAccent": "text-onBackground")}
+                    />
                 </button>
             </CardHeader>
 
