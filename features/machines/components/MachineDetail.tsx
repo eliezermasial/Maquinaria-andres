@@ -66,10 +66,12 @@ function DocumentItem({ icon, title, action,}: DocumentItemProps) {
 }
 
 export function MachineDetail({ machine }: MachineDetailProps) {
-  const [machines, setMachines] = useState<Machine[]>([]);
+
   const {addToCart} = useCart();
+  const [machines, setMachines] = useState<Machine[]>([]);
   const [activeTab, setActiveTab] = useState<MachineTab>("Caractéristiques");
-  
+
+  //plus tar ceci sera remplacer par l'api
   useEffect(() => {
 
     async function loadingMachines() {

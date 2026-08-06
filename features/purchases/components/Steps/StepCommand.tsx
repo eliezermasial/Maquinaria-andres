@@ -75,7 +75,7 @@ export function StepCommand({machine,unitPrice, quantity,subtotal,tax,total,setQ
                         Math.max(1, current - 1),
                       )
                     }
-                      disabled={quantity <= 1}
+                    disabled={quantity <= 1}
                     className="flex h-9 w-9 items-center justify-center text-slate-600 transition
                     hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-30"
                   >

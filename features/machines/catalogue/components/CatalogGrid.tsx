@@ -9,8 +9,9 @@ type CatalogGridProps = {
 };
 
 export function CatalogGrid ({filteredMachines,resetFilters}: CatalogGridProps) {
+
   return (
-    <>
+    <div>
       {filteredMachines.length > 0 ? (
         <div className="grid md:justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           <AnimatePresence mode="popLayout">
@@ -42,6 +43,6 @@ export function CatalogGrid ({filteredMachines,resetFilters}: CatalogGridProps) 
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }

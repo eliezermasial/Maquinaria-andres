@@ -1,10 +1,10 @@
-import { typography } from "@/lib/theme/typography";
 import { cn } from "@/lib/utils/cn";
+import { typography } from "@/lib/theme/typography";
 
 
 type FilterCatalogProps = {
-  mobileFiltersOpen: boolean;
   resetFilters: () => void;
+  mobileFiltersOpen: boolean;
   filters: Record<string, string[]>,
   filterOptions: Record<string, string[]>
   setFilter: (key: string, value: string) => void;

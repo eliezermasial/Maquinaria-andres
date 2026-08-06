@@ -1,14 +1,18 @@
 "use client";
 
 
-import { ChangeEvent, useMemo, useState } from "react";
-import { machines } from "../machines";
-import { FilterCatalog } from "./components/FilterCatalog";
-import { CatalogGrid } from "./components/CatalogGrid";
 import { cn } from "@/lib/utils/cn";
-import { MobileFilterButton } from "@/components/ui/MobileFilterButton";
+import { machines } from "../machines";
 import { Machine } from "../types/machine";
 import { useFilters } from "@/hooks/useFilters";
+import { Section } from "@/components/ui/section";
+import { usePagination } from "@/hooks/usePagination";
+import { Container } from "@/components/ui/container";
+import { ChangeEvent, useMemo, useState } from "react";
+import { CatalogGrid } from "./components/CatalogGrid";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { FilterCatalog } from "./components/FilterCatalog";
+import { MobileFilterButton } from "@/components/ui/MobileFilterButton";
 
 
 const triers = [
@@ -63,10 +67,17 @@ export function Catalogue () {
     setSort(value)
   };
 
+  const {
+    currentItems,
+    hasNextPage,
+    hasPreviousPage,
+    handleNextPage,
+    handlePreviousPage,
+  } = usePagination({items: sortFilters, itemsPerPage: 8})
 
   return (
-    <section className="bg-surface py-10 md:py-14">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Section className="bg-surface pb-20 md:pb-24">
+      <Container>
         <MobileFilterButton
           mobileFiltersOpen={mobileFiltersOpen}
           setMobileFiltersOpen={setMobileFiltersOpen}
@@ -106,12 +117,41 @@ export function Catalogue () {
               </div>
             </div>
             <CatalogGrid
-              filteredMachines={sortFilters}
+              filteredMachines={currentItems}
               resetFilters={resetFilters}
             />
           </div>
         </div>
-      </div>
-    </section>
+
+        <div className="mt-15 flex items-center justify-center gap-5">
+          <button
+            type="button"
+            disabled={!hasPreviousPage}
+            onClick={handlePreviousPage}
+            aria-label="Commentaires précédents"
+            className="
+              flex size-10 items-center justify-center rounded-full border border-border 
+              text-onBackground shadow-sm transition hover:border-primary hover:bg-primary 
+              disabled:pointer-events-none disabled:opacity-30 bg-white hover:text-white
+            "
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            type="button"
+            disabled={!hasNextPage}
+            onClick={handleNextPage}
+            aria-label="Commentaires suivants"
+            className="
+              flex size-10 items-center justify-center rounded-full border border-border
+              text-onBackground shadow-sm transition hover:border-primary hover:bg-primary 
+              disabled:pointer-events-none disabled:opacity-30 bg-white hover:text-white
+            "
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+      </Container>
+    </Section>
   );
 }
